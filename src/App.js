@@ -15,8 +15,8 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" component={MakeTakeOrViewSurvey} />
-            <Route path="/survey-list" component={SurveyList} />
-            <Route path="/new-survey" component={NewSurvey} />
+            <Route path="/survey-list/" component={SurveyList} />
+            <Route path="/new-survey/" component={NewSurvey} />
           </Switch>
         </BrowserRouter>
       </div>
