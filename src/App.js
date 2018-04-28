@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch} from "react-router-dom"
 import "./App.css"
-import MakeTakeOrViewSurvey from "./components/makeTakeOrViewSurvey"
+import MakeTakeOrViewSurvey from "./components/landingPage"
 import SurveyList from "./components/surveyList"
 import NewSurvey from "./components/newSurvey"
 import SignUpOrLogin from "./components/createAccount"
@@ -22,10 +22,10 @@ class App extends Component {
 
         <BrowserRouter>
           <Switch>
-            <Route path="/" component={MakeTakeOrViewSurvey} />
+            <Route path="/" component={LandingPage} />
             <Route path="/survey-list/" component={SurveyList} />
             <Route path="/new-survey/" component={NewSurvey} />
-            <Route path="/login" component={SignUpOrLogin} />
+            <Route path="/createAccount" component={CreateAccount} />
           </Switch>
         </BrowserRouter>
       </div>
