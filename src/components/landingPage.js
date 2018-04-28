@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {Link} from "react-router-dom"
 
-class MakeTakeOrViewSurvey extends Component {
+class LandingPage extends Component {
 
   render(){
     return (
@@ -12,4 +12,4 @@ class MakeTakeOrViewSurvey extends Component {
   }
 }
 
-export default MakeTakeOrViewSurvey
+export default LandingPage

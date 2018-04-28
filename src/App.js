@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch } from "react-router-dom"
+import {BrowserRouter, Route, Switch} from "react-router-dom"
 import "./App.css"
 import MakeTakeOrViewSurvey from "./components/makeTakeOrViewSurvey"
 import SurveyList from "./components/surveyList"
 import NewSurvey from "./components/newSurvey"
-import SignUpOrLogin from "./components/signUpOrLogin"
+import SignUpOrLogin from "./components/createAccount"
+import NavBar from
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="header">
-          SonarSurvey - make, take, or view survey results of all kinds!
+          <div className="titleBanner">
+            SonarSurvey - make, take, or view survey results of all kinds!
+          </div>
+          <div>
+            <NavBar />
+          </div>
         </div>
 
         <BrowserRouter>
