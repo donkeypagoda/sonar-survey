@@ -1,16 +1,27 @@
+body{
+    background-color: #C9D8D8;
+}
+
 .App {
   text-align: center;
 }
 .navBar{
-  margin: 1em 5em 5em 5em;
+  margin: 2em 5em 2em 5em;
   background-color: tan;
-  color: light-blue;
+  color: #9DC2F5;
   font-family: Consolas, monospace;
   border-radius: 25px
 }
 .titleBanner{
-  margin: 5px 0 0 5px;
+  margin: 0.5em;
+  padding: 0.5em;
   font-family: Consolas, monospace;
-  color: blue;
+  color: #1B59B0;
   font-size: 2em;
+}
+.landingPage{
+  margin: 2em 5em 1em 5em;
+  padding: 5px;
+  background-color: #4AC4A7;
+  border-radius: 25px
 }

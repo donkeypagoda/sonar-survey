@@ -5,8 +5,8 @@ class LandingPage extends Component {
 
   render(){
     return (
-      <div>
-        Would you like to Make, Take or View the results of a Survey?
+      <div className="landingPage">
+        <div>Would you like to Make, Take or View the results of a Survey?</div>
       </div>
     )
   }
