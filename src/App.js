@@ -11,11 +11,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header">
-          <div className="titleBanner">
-            SonarSurvey - make, take, or view survey results of all kinds!
-          </div>
-        </div>
         <BrowserRouter>
           <div>
             <NavBar />
