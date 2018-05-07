@@ -4,9 +4,9 @@ class NewSurvey extends Component{
 
   render(){
     return(
-      <div>
+      <div className="newSurvey">
         <div className="container">
-          <form className="newSurveyForm">
+          <form name="newSurveyForm">
           </form>
         </div>
       </div>

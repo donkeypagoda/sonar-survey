@@ -4,8 +4,11 @@ class CreateAccount extends Component{
 
   render(){
     return(
-      <div>
-        This will be the new account page
+      <div className="createAccount">
+        <div className="container">
+          <form name="newUser">
+          </form>
+        </div>
       </div>
     )
   }
