@@ -5,7 +5,10 @@ class NewSurvey extends Component{
   render(){
     return(
       <div>
-        This will be the new survey form
+        <div className="container">
+          <form className="newSurveyForm">
+          </form>
+        </div>
       </div>
     )
   }
