@@ -8,7 +8,8 @@ function Question({question}){
           {question.prompt}
         </div>
         <div className="answer">
-          {question.answer_array ? <AnswerList answer_array={this.answer_array} /> : null}
+          <AnswerList answer_array={this.answer} />
+
         </div>
       </div>
     </div>
