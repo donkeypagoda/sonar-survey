@@ -6,6 +6,7 @@ class NewSurvey extends Component{
     return(
       <div className="newSurvey">
         <div className="container">
+        NEW SURVEY
           <form name="newSurveyForm">
           </form>
         </div>
