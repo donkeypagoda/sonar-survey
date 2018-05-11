@@ -13,10 +13,10 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
             <Switch>
-              <Route path='/' component={NavBar} />
               <Route path="/survey-list" component={SurveyList} />
               <Route path="/new-survey" component={NewSurvey} />
-              <Route path='/create-account/new' component={CreateAccount} />
+              <Route path='/create-account' component={CreateAccount} />
+              <Route path='/' component={LandingPage} /> //make sure to have the intial route on the bottom here, otherwise this will fail
             </Switch>
         </BrowserRouter>
 
