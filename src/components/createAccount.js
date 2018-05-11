@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import {link} from "react-router-dom"
 
 class CreateAccount extends Component{
 
@@ -6,8 +7,14 @@ class CreateAccount extends Component{
     return(
       <div className="createAccount">
         <div className="container">
-          <form name="newUser">
-          </form>
+          <div className="linkHeader">
+            <Link to="/survey-list">Return to survey list</Link>
+          </div>
+          <div className="newUser">
+            <form name="newUser">
+              <input type="text"
+            </form>
+          </div>
         </div>
       </div>
     )
