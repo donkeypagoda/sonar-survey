@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import Survey from "./survey.js"
 
 class SurveyList extends Component{
   constructor(){
@@ -20,6 +21,7 @@ class SurveyList extends Component{
   render(){
     return(
       <div>
+      <Survey />
         This will be the survey list, with options to take each survey, or view the results of each survey
         {this.state.surveyList}
       </div>

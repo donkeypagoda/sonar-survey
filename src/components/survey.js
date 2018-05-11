@@ -1,11 +1,15 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
-class Question extends Component{
+class Survey extends Component{
 
   render(){
-    <div className="question">
-    QUESTION TEST
-    </div>
+    return(
+      <div className="question">
+      SURVEY TEST
+      </div>
+    )
   }
 }
+
+export default Survey
