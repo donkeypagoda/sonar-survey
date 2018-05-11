@@ -16,10 +16,14 @@ class CreateAccount extends Component{
     const result = await fetch("http://localhost:5000/users")
     const {user} = await result.json();
     console.log(user)
+    this.props.history.push('/')
   }
   submitNewUser = e => {
     e.preventDefault()
-    console.log(e.target)
+    console.log(e.target[0].value)
+    console.log(e.target[1].value)
+    console.log(e.target[2].value)
+    console.log(e.target[3].value)
     // let newUser = {
     //   name: e.target[0].value,
     //   email: e.target[1].value,
