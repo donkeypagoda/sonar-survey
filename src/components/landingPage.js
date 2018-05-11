@@ -12,7 +12,7 @@ class LandingPage extends Component {
           <Link to="/survey-list">Click here to take a survey or view results</Link>
         </div>
         <div className="surveyListLink">
-          <Link to="/create-account">Click here to create an account</Link>
+          <Link to="/create-account/new">Click here to create an account</Link>
         </div>
       </div>
         <div>Would you like to Make, Take or View the results of a Survey?</div>
