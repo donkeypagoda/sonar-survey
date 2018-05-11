@@ -2,6 +2,18 @@ import React, {Component} from "react"
 import {link} from "react-router-dom"
 
 class CreateAccount extends Component{
+  async addNewUser(newUser){
+    await fetch("http://localhost:5000/",
+    {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
+
+    });
+  }
   submitNewUser = e => {
     e.preventDefault()
     let newUser = {
@@ -9,6 +21,7 @@ class CreateAccount extends Component{
       email: e.target[1].value,
       password: e.target[2].value
     }
+    this.addNewUser(newUser)
   }
 
   render(){
