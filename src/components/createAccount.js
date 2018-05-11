@@ -19,13 +19,13 @@ class CreateAccount extends Component{
   }
   submitNewUser = e => {
     e.preventDefault()
-    console.log(e)
-    let newUser = {
-      name: e.target[0].value,
-      email: e.target[1].value,
-      password: e.target[2].value
-    }
-    this.addNewUser(newUser)
+    console.log(e.target)
+    // let newUser = {
+    //   name: e.target[0].value,
+    //   email: e.target[1].value,
+    //   password: e.target[2].value
+    // }
+    // this.addNewUser(newUser)
   }
 
   render(){
@@ -45,6 +45,7 @@ class CreateAccount extends Component{
                 <input type="text" name="password1" />
               <label>Password Confirm</label>
                 <input type="text" name="password2" />
+              <button type="submit">Create Account</button>
             </form>
           </div>
         </div>
