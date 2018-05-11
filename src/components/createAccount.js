@@ -2,6 +2,14 @@ import React, {Component} from "react"
 import {link} from "react-router-dom"
 
 class CreateAccount extends Component{
+  submitNewUser = e => {
+    e.preventDefault()
+    let newUser = {
+      name: e.target[0].value,
+      email: e.target[1].value,
+      password: e.target[2].value
+    }
+  }
 
   render(){
     return(
@@ -12,7 +20,7 @@ class CreateAccount extends Component{
           </div>
           <div className="newUser">
             <form name="newUser">
-              <input type="text"
+              <input type="text" onSubmit={this.submitNewUser}
             </form>
           </div>
         </div>
