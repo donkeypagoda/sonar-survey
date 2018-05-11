@@ -19,6 +19,7 @@ class CreateAccount extends Component{
   }
   submitNewUser = e => {
     e.preventDefault()
+    console.log(e)
     let newUser = {
       name: e.target[0].value,
       email: e.target[1].value,

@@ -13,12 +13,12 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <div>
-            <NavBar />
+          <NavBar />
             <Switch>
               <Route path="/" component={LandingPage} />
               <Route path="/survey-list/" component={SurveyList} />
               <Route path="/new-survey/" component={NewSurvey} />
-              <Route path="/createAccount" component={CreateAccount} />
+              <Route path="/createAccount/" component={CreateAccount} />
             </Switch>
           </div>
         </BrowserRouter>
