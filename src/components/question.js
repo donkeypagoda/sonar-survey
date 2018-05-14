@@ -6,10 +6,10 @@ function Question({question}){
     <div className="question">
       <div className="container">
         <div className="prompt">
-          // {question.prompt}
+          Question itself will go here
         </div>
         <div className="answer">
-          <AnswerList answer_array={this.answer} />
+          <AnswerList />
 
         </div>
       </div>
