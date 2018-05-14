@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 
-function AnswerList(answer){
-  
+function AnswerList(){
+
   return(
     <div className="answerList">
 

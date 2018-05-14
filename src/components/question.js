@@ -6,7 +6,7 @@ function Question({question}){
     <div className="question">
       <div className="container">
         <div className="prompt">
-          {question.prompt}
+          // {question.prompt}
         </div>
         <div className="answer">
           <AnswerList answer_array={this.answer} />
