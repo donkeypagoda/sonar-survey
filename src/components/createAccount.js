@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 class CreateAccount extends Component{
   async addNewUser(newUser){
-    await fetch("http://localhost:5000/users",
+    const result = await fetch("http://localhost:5000/users",
     {
       method: "POST",
       headers: {
@@ -13,9 +13,9 @@ class CreateAccount extends Component{
       body: JSON.stringify(newUser)
 
     });
-    const result = await fetch("http://localhost:5000/users")
-    const {user} = await result.json();
-    console.log(user)
+    console.log(result)
+    // const {user} = await result.json();
+    // console.log({user})
     this.props.history.push('/')
   }
   submitNewUser = e => {
