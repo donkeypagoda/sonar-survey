@@ -1,5 +1,4 @@
 import React from "react"
-import AnswerList from "./answerList.js"
 
 function Question({question}){
   return(
