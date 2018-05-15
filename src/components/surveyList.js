@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import Survey from "./survey.js"
+import {Link} from 'react-router-dom'
 
 class SurveyList extends Component{
   constructor(){
@@ -21,7 +22,11 @@ class SurveyList extends Component{
   render(){
     let pageList = []
     this.state.surveyList.map(survey => {
-      pageList.push(<Survey key={survey.id} title={survey.title} url={survey.url} />)
+      pageList.push(
+        <Link to={survey.url}>
+          <Survey key={survey.id} title={survey.title} url={survey.url} />
+        </Link>
+      )
     })
     return(
       <div>
