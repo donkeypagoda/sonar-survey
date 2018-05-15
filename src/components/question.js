@@ -8,10 +8,6 @@ function Question({question}){
         <div className="prompt">
           Question itself will go here
         </div>
-        <div className="answer">
-          <AnswerList />
-
-        </div>
       </div>
     </div>
   )
