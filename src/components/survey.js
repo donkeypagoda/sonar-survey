@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Question from "./question.js"
+import AnswerList from "./answerList"
 
 class Survey extends Component{
   constructor(){
@@ -15,8 +16,9 @@ class Survey extends Component{
 
     return(
       <div className="question">
+        Survey content:
         <Question />
-      SURVEY TEST
+        <AnswerList />
       </div>
     )
   }

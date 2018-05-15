@@ -19,10 +19,13 @@ class SurveyList extends Component{
   }
 
   render(){
+    let pageList = []
+    this.state.surveyList.map(survey => {
+      pageList.push(<Survey key={survey.id} title={survey.title} url={survey.url} />)
+    })
     return(
       <div>
-      <Survey />
-        This will be the survey list, with options to take each survey, or view the results of each survey
+        {pageList}
       </div>
     )
   }
