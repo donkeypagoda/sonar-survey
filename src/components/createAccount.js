@@ -25,9 +25,9 @@ class CreateAccount extends Component{
     console.log(e.target[2].value)
     console.log(e.target[3].value)
     let newUser = {
-      name: e.target[0].value,
-      email: e.target[1].value,
-      password: e.target[2].value
+      "name": e.target[0].value,
+      "email": e.target[1].value,
+      "password": e.target[2].value
     }
     this.addNewUser(newUser)
   }

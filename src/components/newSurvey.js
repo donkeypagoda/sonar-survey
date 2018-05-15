@@ -13,6 +13,7 @@ class NewSurvey extends Component{
         <div className="container">
         NEW SURVEY
           <form name="newSurveyForm">
+
           </form>
         </div>
       </div>
