@@ -14,8 +14,6 @@ class CreateAccount extends Component{
 
     });
     console.log(result)
-    // const {user} = await result.json();
-    // console.log({user})
     this.props.history.push('/')
   }
   submitNewUser = e => {
