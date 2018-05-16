@@ -14,6 +14,20 @@ class NewSurvey extends Component{
     //then push into state
   }
 
+  async addNewSurvey(newSurvey){
+    const result = await fetch("http://localhost:5000/surveys",
+    {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newSurvey)
+    });
+    console.log(result)
+    this.props.history.push('/')
+  }
+
   submitSurvey = e =>{
     e.preventDefault()
     console.log(e.target[0].value)
