@@ -22,11 +22,11 @@ class NewSurvey extends Component{
   render(){
     return(
       <div className="newSurvey">
+        <form name="newSurveyForm">
+
+        </form>
         <div className="container">
         NEW SURVEY
-          <form name="newSurveyForm">
-
-          </form>
         </div>
       </div>
     )
