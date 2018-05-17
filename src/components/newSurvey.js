@@ -37,7 +37,8 @@ class NewSurvey extends Component{
     return(
       <div className="newSurvey">
         <form name="newSurveyForm">
-
+          <label>Question</label>
+          <input type="text" />
         </form>
         <div className="container">
         NEW SURVEY
