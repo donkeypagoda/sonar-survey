@@ -29,10 +29,11 @@ class NewSurvey extends Component{
   }
 
   submitSurvey = e => {
+    e.preventDefault()
     const newSurvey = {
-      "title":
+      "title": e.target[0].value,
     }
-    console.log(this.)
+    console.log(newSurvey)
   }
 
   render(){
@@ -57,7 +58,7 @@ class NewSurvey extends Component{
           <button type="submit">Add This Question</button>
         </form>
         <div className="container">
-          <form name="newSurveyForm">
+          <form name="newSurveyForm" onSubmit={this.submitSurvey}>
             <label>Survey Title:</label>
             <input type="text" name="surveyTitle" />
             <button type="submit">Finish Survey</button>
