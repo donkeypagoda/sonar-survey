@@ -12,6 +12,9 @@ class NewSurvey extends Component{
 
   chooseQuestionType = num => {
     console.log(num)
+    this.setState({
+      formToShow: num
+    })
   }
 
   submitSingleQuestionAndAnswer = e => {
@@ -51,17 +54,23 @@ class NewSurvey extends Component{
               <label>Multiple Choice</label>
               <input type="radio" id="multipleChoice" name="type" checked={this.state.formToShow === 1} onChange = {() => this.chooseQuestionType(1)}/>
               <label>True or False</label>
-              <input type="radio" id="boolean" name="type" checked={this.state.formToShow === 2} onChange = {() => this.chooseQuestionType(1)}/>
+              <input type="radio" id="boolean" name="type" checked={this.state.formToShow === 2} onChange = {() => this.chooseQuestionType(2)}/>
               <label>Scale of 1 to 10</label>
-              <input type="radio" id="rating" name="type" checked={this.state.formToShow === 3} onChange = {() => this.chooseQuestionType(1)}/>
+              <input type="radio" id="rating" name="type" checked={this.state.formToShow === 3} onChange = {() => this.chooseQuestionType(3)}/>
               <label>Open Response</label>
-              <input type="radio" id="essay" name="type" checked={this.state.formToShow === 4} onChange={this.chooseQuestionType}/>
+              <input type="radio" id="essay" name="type" checked={this.state.formToShow === 4} onChange = {() => this.chooseQuestionType(4)}/>
           </div>
-          <div className="textQuestionAndAnswerInput">
-            <label>Question</label>
-            <input type="text" name="questionInput" />
-            <label>Answer</label>
-            <input type="text" name="answerInput" />
+          <div>
+            {
+              this.state.formToShow === 1 ?
+              <div className="textQuestionAndAnswerInput">
+              <label>Question</label>
+              <input type="text" name="questionInput" />
+              <label>Answer</label>
+              <input type="text" name="answerInput" />
+              </div>
+              : null
+            }
           </div>
           <div className="addQuestionButton">
             <button type="submit">Add This Question</button>
