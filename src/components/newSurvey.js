@@ -64,6 +64,7 @@ class NewSurvey extends Component{
             {
               this.state.formToShow === 1 ?
                 <div className="multipleChoiceQuestionAndAnswerInput">
+                MULTIPLE CHOICE
                   <label>Question</label>
                     <input type="text" name="questionInput" />
                   <label>Answer</label>
@@ -76,6 +77,7 @@ class NewSurvey extends Component{
             {
               this.state.formToShow === 2 ?
                 <div className="booleanQuestionAndAnswerInput">
+                BOOLEAN
                   <label>Question</label>
                     <input type="text" name="questionInput" />
                   <label>Answer</label>
@@ -88,6 +90,7 @@ class NewSurvey extends Component{
             {
               this.state.formToShow === 3 ?
                 <div className="ratingQuestionAndAnswerInput">
+                RANGE OR RATING
                   <label>Question</label>
                     <input type="range" min="0" max="10" value="5" name="questionInput" />
                   <label>Answer Range</label>
@@ -99,6 +102,7 @@ class NewSurvey extends Component{
               {
                 this.state.formToShow === 4 ?
                   <div className="essayQuestionAndAnswerInput">
+                  ESSAY
                     <label>Question</label>
                       <input type="text" name="questionInput" />
                     <label>Answer</label>
