@@ -38,8 +38,15 @@ class NewSurvey extends Component{
       <div className="newSurvey">
         <form name="newSurveyForm">
           <div>
-            <label>Question Type</label>
-            <input type="radio" id="multipleChoice" />
+            <p>Question Type:</p>
+              <label>Multiple Choice</label>
+              <input type="radio" id="multipleChoice" />
+              <label>True or False</label>
+              <input type="radio" id="boolean" />
+              <label>Scale of 1 to 10</label>
+              <input type="radio" id="rating" />
+              <label>Open Response</label>
+              <input type="radio" id="essay" />
           </div>
           <label>Question</label>
           <input type="text" name="questionInput" />
