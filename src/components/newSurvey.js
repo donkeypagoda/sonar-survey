@@ -89,8 +89,8 @@ class NewSurvey extends Component{
               this.state.formToShow === 3 ?
                 <div className="ratingQuestionAndAnswerInput">
                   <label>Question</label>
-                    <input type="text" name="questionInput" />
-                  <label>Answer</label>
+                    <input type="range" min="0" max="10" value="5" name="questionInput" />
+                  <label>Answer Range</label>
                     <input type="text" name="answerInput" />
                 </div>
               : null
