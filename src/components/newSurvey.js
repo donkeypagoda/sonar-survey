@@ -28,9 +28,9 @@ class NewSurvey extends Component{
     this.props.history.push('/')
   }
 
-  submitSurvey => {
+  submitSurvey = e => {
     const newSurvey = {
-      
+      "title":
     }
     console.log(this.)
   }
@@ -38,7 +38,7 @@ class NewSurvey extends Component{
   render(){
     return(
       <div className="newSurvey">
-        <form name="newSurveyForm">
+        <form name="newQuestionForm" onSubmit={this.submitSingleQuestionAndAnswer}>
           <div>
             <p>Question Type:</p>
               <label>Multiple Choice</label>
@@ -56,9 +56,12 @@ class NewSurvey extends Component{
           <input type="text" name="answerInput" />
           <button type="submit">Add This Question</button>
         </form>
-        <button onclick={this.submitSurvey()}>Finish Survey</button>
         <div className="container">
-        NEW SURVEY
+          <form name="newSurveyForm">
+            <label>Survey Title:</label>
+            <input type="text" name="surveyTitle" />
+            <button type="submit">Finish Survey</button>
+          </form>
         </div>
       </div>
     )
