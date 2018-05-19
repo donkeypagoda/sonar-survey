@@ -9,6 +9,11 @@ class NewSurvey extends Component{
       formToShow: null
     }
   }
+
+  chooseQuestionType=>{
+    console.log(e.target[0].value)
+  }
+
   submitSingleQuestionAndAnswer = e =>{
     e.preventDefault()
     console.log(e.target[0].value)
@@ -44,15 +49,16 @@ class NewSurvey extends Component{
           <div>
             <p>Question Type:</p>
               <label>Multiple Choice</label>
-              <input type="radio" id="multipleChoice" name="type" />
+              <input type="radio" id="multipleChoice" name="type" onChange={this.chooseQuestionType(1)}/>
               <label>True or False</label>
-              <input type="radio" id="boolean" name="type" />
+              <input type="radio" id="boolean" name="type" onChange={this.chooseQuestionType(2)}/>
               <label>Scale of 1 to 10</label>
-              <input type="radio" id="rating" name="type" />
+              <input type="radio" id="rating" name="type" onChange={this.chooseQuestionType(3)}/>
               <label>Open Response</label>
-              <input type="radio" id="essay" name="type" />
+              <input type="radio" id="essay" name="type" onChange={this.chooseQuestionType(4)}/>
           </div>
           <div className="textQuestionAndAnswerInput">
+            {this.state}
             <label>Question</label>
             <input type="text" name="questionInput" />
             <label>Answer</label>
