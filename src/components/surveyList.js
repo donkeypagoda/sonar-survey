@@ -23,8 +23,8 @@ class SurveyList extends Component{
     let pageList = []
     this.state.surveyList.map(survey => {
       pageList.push(
-        <Link to={survey.url}>
-          <Survey key={survey.id} title={survey.title} url={survey.url} />
+        <Link key={survey.id} to={survey.url}>
+          <div>{survey.title}</div>
         </Link>
       )
     })
