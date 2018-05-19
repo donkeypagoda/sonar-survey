@@ -37,8 +37,14 @@ class NewSurvey extends Component{
     return(
       <div className="newSurvey">
         <form name="newSurveyForm">
+          <div>
+            <label>Question Type</label>
+            <input type="radio" id="multipleChoice" />
+          </div>
           <label>Question</label>
-          <input type="text" />
+          <input type="text" name="questionInput" />
+          <label>Answer</label>
+          <input type="text" name="answerInput" />
         </form>
         <div className="container">
         NEW SURVEY
