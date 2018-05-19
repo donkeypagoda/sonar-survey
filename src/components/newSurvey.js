@@ -40,13 +40,13 @@ class NewSurvey extends Component{
           <div>
             <p>Question Type:</p>
               <label>Multiple Choice</label>
-              <input type="radio" id="multipleChoice" />
+              <input type="radio" id="multipleChoice" name="type" />
               <label>True or False</label>
-              <input type="radio" id="boolean" />
+              <input type="radio" id="boolean" name="type" />
               <label>Scale of 1 to 10</label>
-              <input type="radio" id="rating" />
+              <input type="radio" id="rating" name="type" />
               <label>Open Response</label>
-              <input type="radio" id="essay" />
+              <input type="radio" id="essay" name="type" />
           </div>
           <label>Question</label>
           <input type="text" name="questionInput" />
