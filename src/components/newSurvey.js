@@ -5,7 +5,8 @@ class NewSurvey extends Component{
     super()
     this.state = {
       questionList: [],
-      answerList: []
+      answerList: [],
+      formToShow: null
     }
   }
   submitSingleQuestionAndAnswer = e =>{
@@ -51,11 +52,15 @@ class NewSurvey extends Component{
               <label>Open Response</label>
               <input type="radio" id="essay" name="type" />
           </div>
-          <label>Question</label>
-          <input type="text" name="questionInput" />
-          <label>Answer</label>
-          <input type="text" name="answerInput" />
-          <button type="submit">Add This Question</button>
+          <div className="textQuestionAndAnswerInput">
+            <label>Question</label>
+            <input type="text" name="questionInput" />
+            <label>Answer</label>
+            <input type="text" name="answerInput" />
+          </div>
+          <div className="addQuestionButton">
+            <button type="submit">Add This Question</button>
+          </div>
         </form>
         <div className="container">
           <form name="newSurveyForm" onSubmit={this.submitSurvey}>
