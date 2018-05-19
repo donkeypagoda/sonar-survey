@@ -28,9 +28,11 @@ class NewSurvey extends Component{
     this.props.history.push('/')
   }
 
-  submitSurvey = e =>{
-    e.preventDefault()
-    console.log(e.target[0].value)
+  submitSurvey => {
+    const newSurvey = {
+      
+    }
+    console.log(this.)
   }
 
   render(){
