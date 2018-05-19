@@ -10,11 +10,11 @@ class NewSurvey extends Component{
     }
   }
 
-  chooseQuestionType=>{
-    console.log(e.target[0].value)
+  chooseQuestionType = num => {
+    console.log(num)
   }
 
-  submitSingleQuestionAndAnswer = e =>{
+  submitSingleQuestionAndAnswer = e => {
     e.preventDefault()
     console.log(e.target[0].value)
     //then push into state
@@ -49,16 +49,15 @@ class NewSurvey extends Component{
           <div>
             <p>Question Type:</p>
               <label>Multiple Choice</label>
-              <input type="radio" id="multipleChoice" name="type" onChange={this.chooseQuestionType(1)}/>
+              <input type="radio" id="multipleChoice" name="type" checked={this.state.formToShow === 1} onChange = {() => this.chooseQuestionType(1)}/>
               <label>True or False</label>
-              <input type="radio" id="boolean" name="type" onChange={this.chooseQuestionType(2)}/>
+              <input type="radio" id="boolean" name="type" checked={this.state.formToShow === 2} onChange = {() => this.chooseQuestionType(1)}/>
               <label>Scale of 1 to 10</label>
-              <input type="radio" id="rating" name="type" onChange={this.chooseQuestionType(3)}/>
+              <input type="radio" id="rating" name="type" checked={this.state.formToShow === 3} onChange = {() => this.chooseQuestionType(1)}/>
               <label>Open Response</label>
-              <input type="radio" id="essay" name="type" onChange={this.chooseQuestionType(4)}/>
+              <input type="radio" id="essay" name="type" checked={this.state.formToShow === 4} onChange={this.chooseQuestionType}/>
           </div>
           <div className="textQuestionAndAnswerInput">
-            {this.state}
             <label>Question</label>
             <input type="text" name="questionInput" />
             <label>Answer</label>
