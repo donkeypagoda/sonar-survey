@@ -52,7 +52,9 @@ class NewSurvey extends Component{
           <input type="text" name="questionInput" />
           <label>Answer</label>
           <input type="text" name="answerInput" />
+          <button type="submit">Add This Question</button>
         </form>
+        <button onclick={this.submitSurvey()}>Finish Survey</button>
         <div className="container">
         NEW SURVEY
         </div>
