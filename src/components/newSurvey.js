@@ -102,9 +102,7 @@ class NewSurvey extends Component{
                   <div className="essayQuestionAndAnswerInput">
                   ESSAY
                     <label>Question</label>
-                      <input type="text" name="questionInput" />
-                    <label>Answer</label>
-                      <input type="text" name="answerInput" />
+                      <input type="text" name="essayQuestionInput" />
                   </div>
                 : null
               }
