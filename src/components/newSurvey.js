@@ -19,7 +19,7 @@ class NewSurvey extends Component{
 
   submitSingleQuestionAndAnswer = e => {
     e.preventDefault()
-    console.log(e.target[0].value)
+    console.log(e.target[4].value)
     //then push into state
   }
 
