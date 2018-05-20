@@ -66,9 +66,9 @@ class NewSurvey extends Component{
                 <div className="multipleChoiceQuestionAndAnswerInput">
                 MULTIPLE CHOICE
                   <label>Question</label>
-                    <input type="text" name="questionInput" />
-                  <label>Answer</label>
-                    <input type="text" name="answerInput" />
+                    <input type="text" name="multipleChoiceQuestionInput" />
+                  <label>Answers (correct answer first, answers will be randomized)</label>
+                    <input type="text" name="multipleChoiceAnswerInput" />
                 </div>
               : null
             }
@@ -77,11 +77,9 @@ class NewSurvey extends Component{
             {
               this.state.formToShow === 2 ?
                 <div className="booleanQuestionAndAnswerInput">
-                BOOLEAN
+                True or False
                   <label>Question</label>
-                    <input type="text" name="questionInput" />
-                  <label>Answer</label>
-                    <input type="text" name="answerInput" />
+                    <input type="text" name="booleanQuestionInput" />
                 </div>
               : null
             }
@@ -92,7 +90,7 @@ class NewSurvey extends Component{
                 <div className="ratingQuestionAndAnswerInput">
                 RANGE OR RATING
                   <label>Question</label>
-                    <input type="range" min="0" max="10" value="5" name="questionInput" />
+                    <input type="text" name="rangeQuestionInput" />
                   <label>Answer Range</label>
                     <input type="text" name="answerInput" />
                 </div>
