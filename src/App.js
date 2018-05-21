@@ -6,6 +6,7 @@ import SurveyList from "./components/surveyList"
 import NewSurvey from "./components/newSurvey"
 import CreateAccount from "./components/createAccount"
 import NavBar from "./components/navBar"
+import Survey from "./components/survey"
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
                 <Route path="/survey-list" component={SurveyList} />
                 <Route path="/new-survey" component={NewSurvey} />
                 <Route path='/create-account' component={CreateAccount} />
+                <Route path='/survey/:id' component={Survey}
                 {/* make sure to have the intial route on the bottom here, otherwise this will fail */}
                 <Route path='/' component={LandingPage} />
               </Switch>
