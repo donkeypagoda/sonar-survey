@@ -12,9 +12,12 @@ class Survey extends Component{
       takeSurvey: false
     }
   }
-  
 
-  takeSurvey(){
+  // async componentDidMount(){
+  //   const res = await fetch('')
+  // }
+
+  takeSurvey = () =>{
     this.setState({
       takeSurvey: true
     })
@@ -27,8 +30,8 @@ class Survey extends Component{
           D3 results will go here
         </div>
         <div className="takeSurvey">
-          {this.state.takeSurvey ?
-            <button onClick={this.takeSurvey} /> : null
+          {!this.state.takeSurvey ?
+            <button onClick={this.takeSurvey}>Take This Survey</button> : null
           }
         </div>
         {this.state.takeSurvey ?
