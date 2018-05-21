@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Question from "./question.js"
 import AnswerList from "./answerList"
-import TakingSurvey from "./takingSurvey"
 
 class Survey extends Component{
   constructor(){
@@ -20,7 +19,7 @@ class Survey extends Component{
     })
   }
   render(){
-
+    let surveyQuestionsAndAnswers = []
     return(
       <div className="container">
         <div className="surveyResults">
@@ -32,10 +31,9 @@ class Survey extends Component{
           }
         </div>
         {this.state.takeSurvey ?
-          <TakingSurvey />
+          {surveyQuestionsAndAnswers}
+          : null
         }
-        <Question />
-        <AnswerList />
       </div>
     )
   }
