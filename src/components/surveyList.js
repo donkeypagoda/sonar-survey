@@ -21,9 +21,10 @@ class SurveyList extends Component{
 
   render(){
     let pageList = []
+    let SURVEY_ROUTE = '/survey/:survey_url'
     this.state.surveyList.map(survey => {
       pageList.push(
-        <Link key={survey.id} to={"/survey/"{survey.url}}>
+        <Link key={survey.id} to={SURVEY_ROUTE.replace("/:survey_url", survey.url)}>
           <div>{survey.title}</div>
         </Link>
       )

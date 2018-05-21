@@ -12,6 +12,7 @@ class Survey extends Component{
       takeSurvey: false
     }
   }
+  
 
   takeSurvey(){
     this.setState({
