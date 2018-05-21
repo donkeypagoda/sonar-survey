@@ -8,14 +8,23 @@ class Survey extends Component{
     super()
     this.state = {
       questionList: [],
-      answerList: []
+      answerList: [],
+      takeSurvey: false
     }
   }
 
   render(){
 
     return(
-      <div className="question">
+      <div className="container">
+        <div className="surveyResults">
+          D3 results will go here
+        </div>
+        <div className="takeSurvey">
+          {this.state.takeSurvey ?
+            <button onClick={this.takeSurvey} /> : null
+          }
+        </div>
         Survey content:
         <Question />
         <AnswerList />
