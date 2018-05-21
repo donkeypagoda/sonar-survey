@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Question from "./question.js"
 import AnswerList from "./answerList"
+import TakingSurvey from "./takingSurvey"
 
 class Survey extends Component{
   constructor(){
@@ -13,6 +14,11 @@ class Survey extends Component{
     }
   }
 
+  takeSurvey(){
+    this.setState({
+      takeSurvey: true
+    })
+  }
   render(){
 
     return(
@@ -25,7 +31,9 @@ class Survey extends Component{
             <button onClick={this.takeSurvey} /> : null
           }
         </div>
-        Survey content:
+        {this.state.takeSurvey ?
+          <TakingSurvey />
+        }
         <Question />
         <AnswerList />
       </div>
