@@ -48,8 +48,15 @@ class NewSurvey extends Component{
   render(){
     return(
       <div className="newSurvey">
+        <div className="container">
+          <form name="newSurveyForm" onSubmit={this.submitSurvey}>
+            <label>Survey Title:</label>
+            <input type="text" name="surveyTitle" />
+            <button type="submit">Finish Survey</button>
+          </form>
+        </div>
         <form name="newQuestionForm" onSubmit={this.submitSingleQuestionAndAnswer}>
-          <div>
+          <div className="questionSelection">
             <p>Question Type:</p>
               <label>Multiple Choice</label>
               <input type="radio" id="multipleChoice" name="type" checked={this.state.formToShow === 1} onChange = {() => this.chooseQuestionType(1)}/>
@@ -112,13 +119,6 @@ class NewSurvey extends Component{
             <button type="submit">Add This Question</button>
           </div>
         </form>
-        <div className="container">
-          <form name="newSurveyForm" onSubmit={this.submitSurvey}>
-            <label>Survey Title:</label>
-            <input type="text" name="surveyTitle" />
-            <button type="submit">Finish Survey</button>
-          </form>
-        </div>
       </div>
     )
   }
