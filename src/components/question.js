@@ -1,6 +1,6 @@
 import React from "react"
 
-function Question({question}){
+function Question(props){
   return(
     <div className="question">
       <div className="container">

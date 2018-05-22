@@ -7,7 +7,7 @@ class Survey extends Component{
   constructor(){
     super()
     this.state = {
-      qAndAList = [],
+      qAndAList: [],
       takeSurvey: false
     }
   }
@@ -18,7 +18,9 @@ class Survey extends Component{
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
     console.log({qAndA})
-    this.setState({})
+    this.setState({
+      qAndAList: qAndA
+    })
   }
 
   takeSurvey = () =>{
@@ -29,6 +31,14 @@ class Survey extends Component{
 
   render(){
     let surveyQuestionsAndAnswers = []
+    this.state.qAndAList.map( q => {
+      surveyQuestionsAndAnswers.push(
+        <div>
+          <Question prompt={q.prompt} />
+          <AnswerList answer_type={q.answer_type} answerArr={q.answer_array} />
+        </div>
+      )
+    })
     return(
       <div className="container">
         <div className="surveyResults">

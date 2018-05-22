@@ -1,6 +1,6 @@
 import React from "react"
 
-function AnswerList(){
+function AnswerList(props){
 
   return(
     <div className="answerList">
