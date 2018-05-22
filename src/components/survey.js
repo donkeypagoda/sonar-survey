@@ -33,7 +33,7 @@ class Survey extends Component{
     let surveyQuestionsAndAnswers = []
     this.state.qAndAList.map( q => {
       surveyQuestionsAndAnswers.push(
-        <div>
+        <div key={q.id}>
           <Question prompt={q.prompt} />
           <AnswerList answer_type={q.answer_type} answerArr={q.answer_array} />
         </div>
@@ -49,10 +49,12 @@ class Survey extends Component{
             <button onClick={this.takeSurvey}>Take This Survey</button> : null
           }
         </div>
-        {this.state.takeSurvey ?
-          {surveyQuestionsAndAnswers}
-          : null
-        }
+        <div className="surveyQandA">
+          {this.state.takeSurvey ?
+            surveyQuestionsAndAnswers
+            : null
+          }
+        </div>
       </div>
     )
   }
