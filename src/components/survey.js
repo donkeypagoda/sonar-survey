@@ -7,8 +7,7 @@ class Survey extends Component{
   constructor(){
     super()
     this.state = {
-      questionList: [],
-      answerList: [],
+      qAndAList = [],
       takeSurvey: false
     }
   }
@@ -19,6 +18,7 @@ class Survey extends Component{
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
     console.log({qAndA})
+    this.setState({})
   }
 
   takeSurvey = () =>{
@@ -26,6 +26,7 @@ class Survey extends Component{
       takeSurvey: true
     })
   }
+
   render(){
     let surveyQuestionsAndAnswers = []
     return(
