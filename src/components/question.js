@@ -5,7 +5,7 @@ function Question(props){
     <div className="question">
       <div className="container">
         <div className="prompt">
-          Question itself will go here
+          {props.prompt}
         </div>
       </div>
     </div>
