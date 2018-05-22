@@ -35,7 +35,7 @@ class Survey extends Component{
       surveyQuestionsAndAnswers.push(
         <div key={q.id}>
           <Question prompt={q.prompt} />
-          <AnswerList answer_type={q.answer_type} answerArr={q.answer_array} />
+          <AnswerList answer_type={q.answer_type} answer_array={q.answer_array} />
         </div>
       )
     })
