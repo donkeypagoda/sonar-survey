@@ -13,9 +13,11 @@ class Survey extends Component{
     }
   }
 
-  // async componentDidMount(){
-  //   const res = await fetch('')
-  // }
+  async componentDidMount(){
+    let survey_id = window.location
+    console.log(survey_id)
+    // const res = await fetch(`http://localhost:5000//questions/${survey_id}`)
+  }
 
   takeSurvey = () =>{
     this.setState({
