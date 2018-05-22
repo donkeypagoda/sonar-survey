@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import Survey from "./survey.js"
 import {Link} from 'react-router-dom'
 
 class SurveyList extends Component{
