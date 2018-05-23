@@ -1,9 +1,9 @@
 import React from "react"
 
 function AnswerList(props){
-  console.log(props.answer_array)
+  console.log(props.answer_type)
   let answerList = []
-  if (props.answer_array != null){
+  if (props.answer_type === "multiple_choice"){
     for (let i = 0; i < props.answer_array.length; i++){
       answerList.push(
         <div className="answerSelection" key={i}>
@@ -12,6 +12,16 @@ function AnswerList(props){
         </div>
       )
     }
+  }
+  else if (props.answer_type === "boolean"){
+    answerList = [
+      <div className="answerSelection" key={0}>
+        <label>True</label>
+        <input type="radio" id="true" />
+        <label>False</label>
+        <input type="radio" id="false" />
+      </div>
+    ]
   }
   return(
     <div className="answerList">
