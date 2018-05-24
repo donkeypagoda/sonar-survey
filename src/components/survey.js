@@ -13,7 +13,7 @@ class Survey extends Component{
   }
 
   async componentDidMount(){
-    let survey_id = window.location.href.slice(51)
+    let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
     console.log(survey_id)
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
