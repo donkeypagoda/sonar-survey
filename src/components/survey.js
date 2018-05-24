@@ -47,19 +47,25 @@ class Survey extends Component{
     })
   }
 
+  submissionBuilder = (e.target) => {
+    
+
+  }
+
   submitSurveyAnswers = e => {
     e.preventDefault()
     console.log(e.target[0].checked)
     console.log(e.target[1].checked)
     console.log(e.target[2].value)
     console.log(e.target[11].value)
+    this.submissionBuilder(e.target)
 //     const newResponse = {
 //   "survey_id": req.body.survey_id,
 //   "question_id": req.body.question_id,
 //   "user_id": req.body.user_id,
 //   "response_string": req.body.response_string,
 // }
-    this.submitCompletedSurvey("fuck")
+    // this.submitCompletedSurvey(newResponse)
   }
 
   render(){
