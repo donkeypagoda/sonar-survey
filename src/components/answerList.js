@@ -25,7 +25,7 @@ function AnswerList(props){
   }
   return(
     <div className="answerList">
-      {props.answer_array
+      {props.answer_type != "string"
         ?
         <div>
           <div>Answer Choices:</div>
