@@ -46,7 +46,8 @@ class Survey extends Component{
     this.setState({
       qAndAList: qAndA,
       surveyUrl: qAndA[0].url,
-      ansArr: this.submissionBuilder(qAndA)
+      ansArr: this.submissionBuilder(qAndA),
+      ansGetters: this.getterBuilder(qAndA)
     })
 
   }
@@ -73,8 +74,8 @@ class Survey extends Component{
     })
   }
 
-  answerGetter = (type) => {
-    let getterArr = []
+  answerGetter = (target) => {
+    
   }
 
   submitSurveyAnswers = e => {
