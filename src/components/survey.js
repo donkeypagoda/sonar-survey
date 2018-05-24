@@ -31,8 +31,25 @@ class Survey extends Component{
 
   getterBuilder = (list) => {
     const getArr = []
+    let getterCount = 0
     list.map(g => {
-      getArr.push(g.answer_type)
+      let getter = {
+        "target_inc": 0,
+        "target_type": ""
+      }
+      if (g.answer_type === "boolean"){
+
+        getterCount += 2
+      }
+      else if (g.answer_type === "multiple_choice"){
+
+      }
+      else if (g.answer_type === "range"){
+
+      }
+      else {
+
+      }
     })
     return getArr
   }
@@ -75,16 +92,17 @@ class Survey extends Component{
   }
 
   answerGetter = (target) => {
-    
+
   }
 
   submitSurveyAnswers = e => {
     e.preventDefault()
-    // console.log(e.target[0].checked)
-    // console.log(e.target[1].checked)
-    // console.log(e.target[2].value)
-    // console.log(e.target[11].value)
-    this.submissionBuilder(e.target)
+    console.log(e.target[0].checked)
+    console.log(e.target[1].checked)
+    console.log(e.target[2].value)
+    console.log(e.target[11].value)
+    console.log(e.target)
+    // this.submissionBuilder(e.target)
     // this.submitCompletedSurvey(newResponse)
   }
 
