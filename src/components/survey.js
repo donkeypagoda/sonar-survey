@@ -9,8 +9,32 @@ class Survey extends Component{
     this.state = {
       qAndAList: [],
       takeSurvey: false,
-      surveyUrl: null
+      surveyUrl: null,
+      ansArr: [],
+      ansGetters: []
     }
+  }
+
+  submissionBuilder = (list) => {
+    const ansArr = []
+    list.map(a => {
+      let sub = {
+        "survey_id": a.survey_id,
+        "question_id": a.question_id,
+        "user_id": null, // to be built later with user functionality
+        "response_string": ""
+      }
+      ansArr.push(sub)
+    })
+    return ansArr
+  }
+
+  getterBuilder = (list) => {
+    const getArr = []
+    list.map(g => {
+      getArr.push(g.answer_type)
+    })
+    return getArr
   }
 
   async componentDidMount(){
@@ -22,7 +46,7 @@ class Survey extends Component{
     this.setState({
       qAndAList: qAndA,
       surveyUrl: qAndA[0].url,
-      ansArr: submissionBuilder(qAndA)
+      ansArr: this.submissionBuilder(qAndA)
     })
 
   }
@@ -49,21 +73,7 @@ class Survey extends Component{
     })
   }
 
-  submissionBuilder = (list) => {
-    const ansArr = []
-    list.map(a => {
-      let sub = {
-        "survey_id": a.survey_id,
-        "question_id": a.question_id,
-        "user_id": null, {/* to be built later with user functionality */}
-        "response_string": ""
-      }
-      ansArr.push(sub)
-    })
-    return ansArr
-  }
-
-  answerTypeBuilderAndAdder = (type) => {
+  answerGetter = (type) => {
     let getterArr = []
   }
 
