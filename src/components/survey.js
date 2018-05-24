@@ -8,7 +8,8 @@ class Survey extends Component{
     super()
     this.state = {
       qAndAList: [],
-      takeSurvey: false
+      takeSurvey: false,
+      surveyUrl: null
     }
   }
 
@@ -19,15 +20,26 @@ class Survey extends Component{
     const {qAndA} = await res.json()
     console.log({qAndA})
     this.setState({
-      qAndAList: qAndA
+      qAndAList: qAndA,
+      surveyUrl: qAndA[0].url
     })
   }
 
   async submitCompletedSurvey(newResponse){
     console.log(newResponse)
-    const res = await fetch("http://localhost:5000/results", {
+    const res = await fetch("http://localhost:5000/results",
+      {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newResponse)
+      })
+    console.log(res)
+    let nextURL =
+    this.props.history.push('')
 
-    })
   }
 
   takeSurvey = () =>{
