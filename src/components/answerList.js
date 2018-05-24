@@ -1,7 +1,6 @@
 import React from "react"
 
 function AnswerList(props){
-  console.log(props.id)
   let answerList = []
   if (props.answer_type === "multiple_choice"){
     answerList.push(<div key={-1}>Answer Choices:</div>)

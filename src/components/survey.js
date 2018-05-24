@@ -27,18 +27,18 @@ class Survey extends Component{
 
   async submitCompletedSurvey(newResponse){
     console.log(newResponse)
-    const res = await fetch("http://localhost:5000/results",
-      {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newResponse)
-      })
-    console.log(res)
-    this.props.history.push(`/${this.state.surveyUrl}`)
-
+    console.log(this.state.surveyUrl)
+    // const res = await fetch("http://localhost:5000/results",
+    //   {
+    //     method: "POST",
+    //     headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify(newResponse)
+    //   })
+    // console.log(res)
+    this.props.history.push(`${this.state.surveyUrl}`)
   }
 
   takeSurvey = () =>{
@@ -46,6 +46,7 @@ class Survey extends Component{
       takeSurvey: true
     })
   }
+
   submitSurveyAnswers = e => {
     e.preventDefault()
     console.log(e.target[0].checked)
@@ -58,7 +59,7 @@ class Survey extends Component{
 //   "user_id": req.body.user_id,
 //   "response_string": req.body.response_string,
 // }
-    // this.submitCompletedSurvey(newResponse)
+    this.submitCompletedSurvey("fuck")
   }
 
   render(){
