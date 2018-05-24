@@ -28,9 +28,14 @@ class Survey extends Component{
       takeSurvey: true
     })
   }
+  submitSurveyAnswers = e => {
+    e.preventDefault()
+  }
 
   render(){
-    let surveyQuestionsAndAnswers = []
+    let surveyQuestionsAndAnswers = [
+      <form className="takingSurvey" onSubmit={this.submitSurveyAnswers}>
+    ]
     this.state.qAndAList.map( q => {
       surveyQuestionsAndAnswers.push(
         <div key={q.id}>
@@ -39,6 +44,7 @@ class Survey extends Component{
         </div>
       )
     })
+    // surveyQuestionsAndAnswers.push(</form>)
     return(
       <div className="container">
         <div className="surveyResults">

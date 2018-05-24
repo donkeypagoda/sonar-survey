@@ -28,13 +28,13 @@ function AnswerList(props){
     answerList = [
       <div className="answerSelection" key={0}>
         <label>Please Select Between 0 and 10</label>
-        <input type="range" id="range" min="0.0" max="10.0" value="5.0" />
+        <input type="range" id="range" min="0.0" max="10.0" defaultValue="5.0" />
       </div>
     ]
   }
   return(
     <div className="answerList">
-      {props.answer_type != "string"
+      {props.answer_type !== "string"
         ?
         <div>
           {answerList}
