@@ -9,7 +9,7 @@ function AnswerList(props){
       answerList.push(
         <div className="answerSelection" key={i}>
           <label>{props.answer_array[i]}</label>
-          <input type="radio" id={props.answer_array[i]} />
+          <input type="radio" name="mfAnswer" id={props.answer_array[i]} />
         </div>
       )
     }
@@ -18,9 +18,9 @@ function AnswerList(props){
     answerList = [
       <div className="answerSelection" key={0}>
         <label>True</label>
-        <input type="radio" id="true" />
+        <input type="radio" id="true" name="tfAnswer"/>
         <label>False</label>
-        <input type="radio" id="false" />
+        <input type="radio" id="false" name="tfAnswer"/>
       </div>
     ]
   }

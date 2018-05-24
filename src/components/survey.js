@@ -30,6 +30,8 @@ class Survey extends Component{
   }
   submitSurveyAnswers = e => {
     e.preventDefault()
+    console.log(e.target[0].value)
+    // this.submitCompletedSurvey
   }
 
   render(){
@@ -56,6 +58,7 @@ class Survey extends Component{
           {this.state.takeSurvey ?
             <form className="takingSurvey" onSubmit={this.submitSurveyAnswers}>
               {surveyQuestionsAndAnswers}
+              <button type="submit">Submit Completed Survey</button>
             </form>
             : null
           }
