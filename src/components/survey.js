@@ -33,9 +33,7 @@ class Survey extends Component{
   }
 
   render(){
-    let surveyQuestionsAndAnswers = [
-      <form className="takingSurvey" onSubmit={this.submitSurveyAnswers}>
-    ]
+    let surveyQuestionsAndAnswers = []
     this.state.qAndAList.map( q => {
       surveyQuestionsAndAnswers.push(
         <div key={q.id}>
@@ -44,7 +42,6 @@ class Survey extends Component{
         </div>
       )
     })
-    // surveyQuestionsAndAnswers.push(</form>)
     return(
       <div className="container">
         <div className="surveyResults">
@@ -57,7 +54,9 @@ class Survey extends Component{
         </div>
         <div className="surveyQandA">
           {this.state.takeSurvey ?
-            surveyQuestionsAndAnswers
+            <form className="takingSurvey" onSubmit={this.submitSurveyAnswers}>
+              {surveyQuestionsAndAnswers}
+            </form>
             : null
           }
         </div>

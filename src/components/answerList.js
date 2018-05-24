@@ -41,9 +41,7 @@ function AnswerList(props){
         </div>
         :
         <div>
-          <form className="answerField">
-            <input type="text" name="answer" />
-          </form>
+          <input type="text" name="answer" />
         </div>
       }
     </div>
