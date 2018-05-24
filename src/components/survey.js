@@ -30,7 +30,7 @@ class Survey extends Component{
   }
   submitSurveyAnswers = e => {
     e.preventDefault()
-    console.log(e.target[0].value)
+    console.log(e.target[0])
     // this.submitCompletedSurvey
   }
 
