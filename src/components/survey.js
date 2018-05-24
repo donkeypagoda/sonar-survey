@@ -37,8 +37,7 @@ class Survey extends Component{
         body: JSON.stringify(newResponse)
       })
     console.log(res)
-    let nextURL =
-    this.props.history.push('')
+    this.props.history.push(`/${this.state.surveyUrl}`)
 
   }
 
@@ -68,7 +67,7 @@ class Survey extends Component{
       surveyQuestionsAndAnswers.push(
         <div key={q.id}>
           <Question prompt={q.prompt} />
-          <AnswerList answer_type={q.answer_type} answer_array={q.answer_array} />
+          <AnswerList answer_type={q.answer_type} answer_array={q.answer_array} id={q.id} />
         </div>
       )
     })

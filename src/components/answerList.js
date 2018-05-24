@@ -1,15 +1,16 @@
 import React from "react"
 
 function AnswerList(props){
-  console.log(props.answer_type)
+  console.log(props.id)
   let answerList = []
   if (props.answer_type === "multiple_choice"){
     answerList.push(<div key={-1}>Answer Choices:</div>)
+    let ansName = "mc" + props.id
     for (let i = 0; i < props.answer_array.length; i++){
       answerList.push(
         <div className="answerSelection" key={i}>
           <label>{props.answer_array[i]}</label>
-          <input type="radio" name="mfAnswer" id={props.answer_array[i]} />
+          <input type="radio" name={ansName} id={props.answer_array[i]} />
         </div>
       )
     }
@@ -18,9 +19,9 @@ function AnswerList(props){
     answerList = [
       <div className="answerSelection" key={0}>
         <label>True</label>
-        <input type="radio" id="true" name="tfAnswer"/>
+        <input type="radio" id="true" name="tfAns"/>
         <label>False</label>
-        <input type="radio" id="false" name="tfAnswer"/>
+        <input type="radio" id="false" name="tfAns"/>
       </div>
     ]
   }
