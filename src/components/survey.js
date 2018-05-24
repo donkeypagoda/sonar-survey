@@ -21,8 +21,10 @@ class Survey extends Component{
     console.log({qAndA})
     this.setState({
       qAndAList: qAndA,
-      surveyUrl: qAndA[0].url
+      surveyUrl: qAndA[0].url,
+      ansArr: submissionBuilder(qAndA)
     })
+
   }
 
   async submitCompletedSurvey(newResponse){
@@ -47,15 +49,22 @@ class Survey extends Component{
     })
   }
 
-  submissionBuilder = (target) => {
-    console.log(this.state.qAndAList)
-    const submission = {
-        "survey_id": "",
-        "question_id": "",
-        "user_id": "",
+  submissionBuilder = (list) => {
+    const ansArr = []
+    list.map(a => {
+      let sub = {
+        "survey_id": a.survey_id,
+        "question_id": a.question_id,
+        "user_id": null, {/* to be built later with user functionality */}
         "response_string": ""
-    }
+      }
+      ansArr.push(sub)
+    })
+    return ansArr
+  }
 
+  answerTypeBuilderAndAdder = (type) => {
+    let getterArr = []
   }
 
   submitSurveyAnswers = e => {
