@@ -16,6 +16,10 @@ class NewSurvey extends Component{
     })
   }
 
+  addToQuestionAndAnswerState = e => {
+    
+  }
+
   submitSingleQuestionAndAnswer = e => {
     e.preventDefault()
     console.log(e.target[4].value)
@@ -45,6 +49,8 @@ class NewSurvey extends Component{
   }
 
   render(){
+    let qAndAs = []
+
     return(
       <div className="newSurvey">
         <div className="container">
@@ -118,6 +124,9 @@ class NewSurvey extends Component{
             <button type="submit">Add This Question</button>
           </div>
         </form>
+        <div className="surveyBeingBuilt">
+          {qAndAs}
+        </div>
       </div>
     )
   }
