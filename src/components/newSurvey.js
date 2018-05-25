@@ -19,8 +19,8 @@ class NewSurvey extends Component{
   addToQuestionAndAnswerToState = e => {
     e.preventDefault()
     const q = e.target[4].value
-    const a
-    if (this.state.formToShow === 1) a = e.target.[5].value.split(", ")
+    let a = ""
+    if (this.state.formToShow === 1) a = e.target[5].value.split(", ")
     if (this.state.formToShow === 2) a = "boolean"
     if (this.state.formToShow === 3) a = "rating"
     else a = "string"
@@ -29,7 +29,8 @@ class NewSurvey extends Component{
     let newAnsList = this.state.answerList
     newAnsList.push(a)
     this.setState({
-
+      questionList: newQList,
+      answerList: newAnsList
     })
   }
 
@@ -64,7 +65,14 @@ class NewSurvey extends Component{
 
   render(){
     let qAndAs = []
-
+    this.state.questionList.map((q, index) => {
+      qAndAs.push(
+        <div className="tempQuestion">
+          <div key={-1}>{q}</div>
+          <div key={index}>{this.state.answerList[index]}</div>
+        </div>
+      )
+    })
     return(
       <div className="newSurvey">
         <div className="container">
@@ -74,7 +82,7 @@ class NewSurvey extends Component{
             <button type="submit">Finish Survey</button>
           </form>
         </div>
-        <form name="newQuestionForm" onSubmit={this.submitSingleQuestionAndAnswer}>
+        <form name="newQuestionForm" onSubmit={this.addToQuestionAndAnswerToState}>
           <div className="questionSelection">
             <p>Question Type:</p>
               <label>Multiple Choice</label>
