@@ -78,13 +78,23 @@ class NewSurvey extends Component{
   render(){
     let qAndAs = []
     this.state.answerList.map((a, index) => {
+      let ansArr = []
       if (typeof a !== "string"){
-        console.log(a)
+        for (let i = 0; i < a.length; i++){
+          ansArr.push(
+            <div>{a[i]}</div>
+          )
+        }
+      }
+      else{
+        ansArr.push(
+          <div>{a}</div>
+        )
       }
       qAndAs.push(
         <div className="tempQuestion">
           <div key={-1}>{this.state.questionList[index]}</div>
-          <div key={index}>{a}</div>
+          <div key={index}>{ansArr}</div>
         </div>
       )
     })
