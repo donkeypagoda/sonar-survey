@@ -26,13 +26,11 @@ class Survey extends Component{
       }
       ansArr.push(sub)
     })
-    console.log(ansArr)
     return ansArr
   }
 
   async componentDidMount(){
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
-    console.log(survey_id)
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
     console.log({qAndA})
@@ -50,16 +48,16 @@ class Survey extends Component{
   async submitCompletedSurvey(newResponse){
     console.log(newResponse)
     console.log(this.state.surveyUrl)
-    // const res = await fetch("http://localhost:5000/results",
-    //   {
-    //     method: "POST",
-    //     headers: {
-    //       'Accept': 'application/json',
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(newResponse)
-    //   })
-    // console.log(res)
+    const res = await fetch("http://localhost:5000/results",
+      {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newResponse)
+      })
+    console.log(res)
     this.props.history.push(`${this.state.surveyUrl}`)
   }
 
@@ -72,10 +70,9 @@ class Survey extends Component{
   answerGetter = (form) => {
     const ans = [... form]
     const ansArr = []
-    console.log(ans[0].checked)
     ans.map(a => {
-      if (a.getAttribute("get") === "multiple_choice" && a.checked === true) ansArr.push(a.id)
-      if (a.getAttribute("get") === "boolean" && a.checked === true) ansArr.push(a.id)
+      if (a.getAttribute("get") === "multiple_choice" && a.checked) ansArr.push(a.id)
+      if (a.getAttribute("get") === "boolean" && a.checked) ansArr.push(a.id)
       if (a.getAttribute("get") === "range") ansArr.push(a.value)
       if (a.getAttribute("get") === "string") ansArr.push(a.value)
     })
@@ -90,13 +87,6 @@ class Survey extends Component{
     responseArr.map(r =>{
       this.submitCompletedSurvey(r)
     })
-
-    // console.log(e.target[0].checked)
-    // console.log(e.target[1].checked)
-    // console.log(e.target[2].value)
-    // console.log(e.target[11].value)
-    // console.log(e.target)
-    // this.submitCompletedSurvey(newResponse)
   }
 
   render(){
