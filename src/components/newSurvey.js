@@ -20,9 +20,17 @@ class NewSurvey extends Component{
     e.preventDefault()
     const q = e.target[4].value
     const a
-    if (this.state.formToShow === 1){
-      a = e.target.[5].value.split(", ")
-    }
+    if (this.state.formToShow === 1) a = e.target.[5].value.split(", ")
+    if (this.state.formToShow === 2) a = "boolean"
+    if (this.state.formToShow === 3) a = "rating"
+    else a = "string"
+    let newQList = this.state.questionList
+    newQList.push(q)
+    let newAnsList = this.state.answerList
+    newAnsList.push(a)
+    this.setState({
+
+    })
   }
 
   submitSingleQuestionAndAnswer = e => {
