@@ -70,7 +70,7 @@ class Survey extends Component{
       if (a.getAttribute("get") === "range") ansArr.push(a.value)
       if (a.getAttribute("get") === "string") ansArr.push(a.value)
     })
-    console.log(ansArr)
+
     return ansArr
   }
 

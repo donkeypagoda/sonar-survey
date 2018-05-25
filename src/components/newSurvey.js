@@ -11,7 +11,6 @@ class NewSurvey extends Component{
   }
 
   chooseQuestionType = num => {
-    console.log(num)
     this.setState({
       formToShow: num
     })

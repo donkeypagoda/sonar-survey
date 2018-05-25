@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import {Link} from "react-router-dom"
 
 class CreateAccount extends Component{
+
   async addNewUser(newUser){
     const result = await fetch("http://localhost:5000/users",
     {
@@ -13,9 +14,10 @@ class CreateAccount extends Component{
       body: JSON.stringify(newUser)
 
     });
-    console.log(result)
+
     this.props.history.push('/')
   }
+
   submitNewUser = e => {
     e.preventDefault()
     console.log(e.target[0].value)
