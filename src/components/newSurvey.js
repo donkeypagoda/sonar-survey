@@ -18,8 +18,6 @@ class NewSurvey extends Component{
 
   addToQuestionAndAnswerToState = e => {
     e.preventDefault()
-    console.log(e.target[4].value)
-    // console.log(e.target[5].value.length)
     const q = e.target[4].value
     let a = ""
     if (this.state.formToShow === null) return
@@ -36,7 +34,6 @@ class NewSurvey extends Component{
         a = "string"
       }
     }
-    console.log(this.state.formToShow)
     let newQList = this.state.questionList
     newQList.push(q)
     let newAnsList = this.state.answerList
@@ -47,11 +44,10 @@ class NewSurvey extends Component{
     })
   }
 
-  submitSingleQuestionAndAnswer = e => {
-    e.preventDefault()
-    console.log(e.target[4].value)
-    console.log(e.target[5].value)
-    //then push into state
+  submitSingleQuestionAndAnswer(){
+    console.log(this.state.answerList)
+    console.log(this.state.questionList)
+
   }
 
   async addNewSurvey(newSurvey){
@@ -73,7 +69,8 @@ class NewSurvey extends Component{
     const newSurvey = {
       "title": e.target[0].value,
     }
-    console.log(newSurvey)
+    this.submitSingleQuestionAndAnswer()
+    this.addNewSurvey(newSurvey)
   }
 
   render(){
@@ -89,7 +86,7 @@ class NewSurvey extends Component{
       }
       else{
         ansArr.push(
-          <div>{a}</div>
+          <div key={-1}>{a}</div>
         )
       }
       qAndAs.push(
