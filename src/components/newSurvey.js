@@ -19,10 +19,11 @@ class NewSurvey extends Component{
   addToQuestionAndAnswerToState = e => {
     e.preventDefault()
     console.log(e.target[4].value)
-    console.log(e.target[5].value.length)
+    // console.log(e.target[5].value.length)
     const q = e.target[4].value
     let a = ""
-    if (e.target[5].value.length > 0){
+    if (this.state.formToShow === null) return
+    else if (e.target[5].value.length > 0){
       let ans = e.target[5].value
       let tempArr = ans.split(", ")
       a = tempArr
@@ -82,7 +83,7 @@ class NewSurvey extends Component{
       if (typeof a !== "string"){
         for (let i = 0; i < a.length; i++){
           ansArr.push(
-            <div>{a[i]}</div>
+            <div key={i}>{a[i]}</div>
           )
         }
       }
@@ -92,9 +93,9 @@ class NewSurvey extends Component{
         )
       }
       qAndAs.push(
-        <div className="tempQuestion">
-          <div key={-1}>{this.state.questionList[index]}</div>
-          <div key={index}>{ansArr}</div>
+        <div key={index} className="tempQuestion">
+          <div>{this.state.questionList[index]}</div>
+          <div>{ansArr}</div>
         </div>
       )
     })
