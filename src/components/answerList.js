@@ -9,7 +9,7 @@ function AnswerList(props){
       answerList.push(
         <div className="answerSelection" key={i}>
           <label>{props.answer_array[i]}</label>
-          <input type="radio" name={ansName} id={props.answer_array[i]} />
+          <input type="radio" get={props.answer_type} name={ansName} id={props.answer_array[i]} />
         </div>
       )
     }
@@ -18,9 +18,9 @@ function AnswerList(props){
     answerList = [
       <div className="answerSelection" key={0}>
         <label>True</label>
-        <input type="radio" id="true" name="tfAns"/>
+        <input type="radio" get={props.answer_type} id="true" name="tfAns"/>
         <label>False</label>
-        <input type="radio" id="false" name="tfAns"/>
+        <input type="radio" get={props.answer_type} id="false" name="tfAns"/>
       </div>
     ]
   }
@@ -28,7 +28,7 @@ function AnswerList(props){
     answerList = [
       <div className="answerSelection" key={0}>
         <label>Please Select Between 0 and 10</label>
-        <input type="range" id="range" min="0.0" max="10.0" defaultValue="5.0" />
+        <input type="range" get={props.answer_type} id="range" min="0.0" max="10.0" defaultValue="5.0" />
       </div>
     ]
   }
@@ -41,7 +41,7 @@ function AnswerList(props){
         </div>
         :
         <div>
-          <input type="text" name="answer" />
+          <input type="text" get={props.answer_type} name="answer" />
         </div>
       }
     </div>

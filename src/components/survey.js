@@ -10,8 +10,8 @@ class Survey extends Component{
       qAndAList: [],
       takeSurvey: false,
       surveyUrl: null,
-      ansArr: [],
-      ansGetters: []
+      // ansArr: [],
+      // ansGetters: []
     }
   }
 
@@ -30,37 +30,35 @@ class Survey extends Component{
   }
 
   getterBuilder = (list) => {
-    const getArr = []
-    let getterCount = 0
-    list.map(g => {
-      let getter = {
-        "target_incs": [],
-        "target_type": ""
-      }
-      if (g.answer_type === "boolean"){
-        getter.target_incs = [getterCount, getterCount + 1]
-        getter.target_type = "checked"
-        getArr.push(getter)
-        getterCount += 2
-      }
-      else if (g.answer_type === "multiple_choice"){
-        for (let i = 0; g.answer_array.length; i++ ){
-          getter.target_incs.push(getterCount + i)
-        }
-        getter.target_type = "id"
-        getArr.push(getter)
-        getterCount += g.answer_array.length
-      }
-      else if (g.answer_type === "range"){
-        getter.target_incs: getterCount
-        getterCount++
-      }
-      else {
-
-        getterCount++
-      }
-    })
-    return getArr
+    // const getArr = []
+    // let getterCount = 0
+    // list.map(g => {
+    //   let getter = {
+    //     "target_incs": [],
+    //     "target_type": ""
+    //   }
+    //   if (g.answer_type === "boolean"){
+    //     getter.target_incs = [getterCount, getterCount + 1]
+    //     getter.target_type = "checked"
+    //     getArr.push(getter)
+    //     getterCount += 2
+    //   }
+    //   else if (g.answer_type === "multiple_choice"){
+    //     for (let i = 0; g.answer_array.length; i++ ){
+    //       getter.target_incs.push(getterCount + i)
+    //     }
+    //     getter.target_type = "id"
+    //     getArr.push(getter)
+    //     getterCount += g.answer_array.length
+    //   }
+    //   else {
+    //     getter.target_incs = getterCount
+    //     getter.target_type = "value"
+    //     getArr.push(getter)
+    //     getterCount++
+    //   }
+    // })
+    // return getArr
   }
 
   async componentDidMount(){
@@ -69,11 +67,13 @@ class Survey extends Component{
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
     console.log({qAndA})
+    const subs = this.submissionBuilder(qAndA)
+    // const gets = this.getterBuilder(qAndA)
     this.setState({
       qAndAList: qAndA,
       surveyUrl: qAndA[0].url,
-      ansArr: this.submissionBuilder(qAndA),
-      ansGetters: this.getterBuilder(qAndA)
+      ansArr: subs
+      // ansGetters: gets
     })
 
   }
@@ -106,12 +106,13 @@ class Survey extends Component{
 
   submitSurveyAnswers = e => {
     e.preventDefault()
-    console.log(e.target[0].checked)
-    console.log(e.target[1].checked)
-    console.log(e.target[2].value)
-    console.log(e.target[11].value)
+    // e.target.map( a =>)
+
+    // console.log(e.target[0].checked)
+    // console.log(e.target[1].checked)
+    // console.log(e.target[2].value)
+    // console.log(e.target[11].value)
     console.log(e.target)
-    // this.submissionBuilder(e.target)
     // this.submitCompletedSurvey(newResponse)
   }
 
