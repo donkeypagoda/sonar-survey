@@ -10,22 +10,23 @@ class Survey extends Component{
       qAndAList: [],
       takeSurvey: false,
       surveyUrl: null,
-      ansArr: []
+      // ansArr: []
       // ansGetters: []
     }
   }
 
-  submissionBuilder = (list) => {
+  submissionBuilder = (qArr, aArr) => {
     const ansArr = []
-    list.map(a => {
+    qArr.map((a, index) => {
       let sub = {
         "survey_id": a.survey_id,
         "question_id": a.question_id,
         "user_id": null, // to be built later with user functionality
-        "response_string": ""
+        "response_string": aArr[index]
       }
       ansArr.push(sub)
     })
+    console.log(ansArr)
     return ansArr
   }
 
@@ -35,12 +36,12 @@ class Survey extends Component{
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
     console.log({qAndA})
-    const subs = this.submissionBuilder(qAndA)
+    // const subs = this.submissionBuilder(qAndA)
     // const gets = this.getterBuilder(qAndA)
     this.setState({
       qAndAList: qAndA,
       surveyUrl: qAndA[0].url,
-      ansArr: subs
+      // ansArr: subs
       // ansGetters: gets
     })
 
@@ -78,17 +79,19 @@ class Survey extends Component{
       if (a.get === "string") ansArr.push(a.value)
     })
     console.log(ansArr)
+    return ansArr
   }
 
   submitSurveyAnswers = e => {
     e.preventDefault()
-    this.answerGetter(e.target)
+    const ans = this.answerGetter(e.target)
+    const newResponse = this.submissionBuilder(this.state.qAndAList, ans)
 
     // console.log(e.target[0].checked)
     // console.log(e.target[1].checked)
     // console.log(e.target[2].value)
     // console.log(e.target[11].value)
-    console.log(e.target.length)
+    // console.log(e.target.length)
     // this.submitCompletedSurvey(newResponse)
   }
 
