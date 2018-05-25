@@ -72,11 +72,12 @@ class Survey extends Component{
   answerGetter = (form) => {
     const ans = [... form]
     const ansArr = []
+    console.log(ans[0].checked)
     ans.map(a => {
-      if (a.get === "multiple_choice" && a.checked === true) ansArr.push(a.id)
-      if (a.get === "boolean" && a.checked === true) ansArr.push(a.id)
-      if (a.get === "range") ansArr.push(a.value)
-      if (a.get === "string") ansArr.push(a.value)
+      if (a.getAttribute("get") === "multiple_choice" && a.checked === true) ansArr.push(a.id)
+      if (a.getAttribute("get") === "boolean" && a.checked === true) ansArr.push(a.id)
+      if (a.getAttribute("get") === "range") ansArr.push(a.value)
+      if (a.getAttribute("get") === "string") ansArr.push(a.value)
     })
     console.log(ansArr)
     return ansArr
@@ -85,13 +86,16 @@ class Survey extends Component{
   submitSurveyAnswers = e => {
     e.preventDefault()
     const ans = this.answerGetter(e.target)
-    const newResponse = this.submissionBuilder(this.state.qAndAList, ans)
+    const responseArr = this.submissionBuilder(this.state.qAndAList, ans)
+    responseArr.map(r =>{
+      this.submitCompletedSurvey(r)
+    })
 
     // console.log(e.target[0].checked)
     // console.log(e.target[1].checked)
     // console.log(e.target[2].value)
     // console.log(e.target[11].value)
-    // console.log(e.target.length)
+    // console.log(e.target)
     // this.submitCompletedSurvey(newResponse)
   }
 
