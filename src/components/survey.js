@@ -10,7 +10,7 @@ class Survey extends Component{
       qAndAList: [],
       takeSurvey: false,
       surveyUrl: null,
-      // ansArr: [],
+      ansArr: []
       // ansGetters: []
     }
   }
@@ -27,38 +27,6 @@ class Survey extends Component{
       ansArr.push(sub)
     })
     return ansArr
-  }
-
-  getterBuilder = (list) => {
-    // const getArr = []
-    // let getterCount = 0
-    // list.map(g => {
-    //   let getter = {
-    //     "target_incs": [],
-    //     "target_type": ""
-    //   }
-    //   if (g.answer_type === "boolean"){
-    //     getter.target_incs = [getterCount, getterCount + 1]
-    //     getter.target_type = "checked"
-    //     getArr.push(getter)
-    //     getterCount += 2
-    //   }
-    //   else if (g.answer_type === "multiple_choice"){
-    //     for (let i = 0; g.answer_array.length; i++ ){
-    //       getter.target_incs.push(getterCount + i)
-    //     }
-    //     getter.target_type = "id"
-    //     getArr.push(getter)
-    //     getterCount += g.answer_array.length
-    //   }
-    //   else {
-    //     getter.target_incs = getterCount
-    //     getter.target_type = "value"
-    //     getArr.push(getter)
-    //     getterCount++
-    //   }
-    // })
-    // return getArr
   }
 
   async componentDidMount(){
@@ -100,19 +68,27 @@ class Survey extends Component{
     })
   }
 
-  answerGetter = (target) => {
-
+  answerGetter = (form) => {
+    const ans = [... form]
+    const ansArr = []
+    ans.map(a => {
+      if (a.get === "multiple_choice" && a.checked === true) ansArr.push(a.id)
+      if (a.get === "boolean" && a.checked === true) ansArr.push(a.id)
+      if (a.get === "range") ansArr.push(a.value)
+      if (a.get === "string") ansArr.push(a.value)
+    })
+    console.log(ansArr)
   }
 
   submitSurveyAnswers = e => {
     e.preventDefault()
-    // e.target.map( a =>)
+    this.answerGetter(e.target)
 
     // console.log(e.target[0].checked)
     // console.log(e.target[1].checked)
     // console.log(e.target[2].value)
     // console.log(e.target[11].value)
-    console.log(e.target)
+    console.log(e.target.length)
     // this.submitCompletedSurvey(newResponse)
   }
 
