@@ -11,6 +11,9 @@ class NavBar extends Component {
           <Link to="/survey-list/">Click here to take a survey or view results</Link>
         </div>
         <div className="surveyListLink">
+          <Link to="/new-survey">Click here to create a new Survey!</Link>
+        </div>
+        <div className="surveyListLink">
           <Link to="/create-account">Click here to create an account</Link>
         </div>
       </div>
