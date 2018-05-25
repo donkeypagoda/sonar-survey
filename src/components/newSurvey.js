@@ -18,12 +18,24 @@ class NewSurvey extends Component{
 
   addToQuestionAndAnswerToState = e => {
     e.preventDefault()
+    console.log(e.target[4].value)
+    console.log(e.target[5].value.length)
     const q = e.target[4].value
     let a = ""
-    if (this.state.formToShow === 1) a = e.target[5].value.split(", ")
-    if (this.state.formToShow === 2) a = "boolean"
-    if (this.state.formToShow === 3) a = "rating"
-    else a = "string"
+    if (e.target[5].value.length > 0){
+      let ans = e.target[5].value
+      let tempArr = ans.split(", ")
+      a = tempArr
+      console.log(a)
+    }
+    else {
+      if (this.state.formToShow === 2) a = "boolean"
+      else if (this.state.formToShow === 3) a = "rating"
+      else {
+        a = "string"
+      }
+    }
+    console.log(this.state.formToShow)
     let newQList = this.state.questionList
     newQList.push(q)
     let newAnsList = this.state.answerList
@@ -65,11 +77,14 @@ class NewSurvey extends Component{
 
   render(){
     let qAndAs = []
-    this.state.questionList.map((q, index) => {
+    this.state.answerList.map((a, index) => {
+      if (typeof a !== "string"){
+        console.log(a)
+      }
       qAndAs.push(
         <div className="tempQuestion">
-          <div key={-1}>{q}</div>
-          <div key={index}>{this.state.answerList[index]}</div>
+          <div key={-1}>{this.state.questionList[index]}</div>
+          <div key={index}>{a}</div>
         </div>
       )
     })
