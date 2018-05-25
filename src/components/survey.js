@@ -34,21 +34,30 @@ class Survey extends Component{
     let getterCount = 0
     list.map(g => {
       let getter = {
-        "target_inc": 0,
+        "target_incs": [],
         "target_type": ""
       }
       if (g.answer_type === "boolean"){
-
+        getter.target_incs = [getterCount, getterCount + 1]
+        getter.target_type = "checked"
+        getArr.push(getter)
         getterCount += 2
       }
       else if (g.answer_type === "multiple_choice"){
-
+        for (let i = 0; g.answer_array.length; i++ ){
+          getter.target_incs.push(getterCount + i)
+        }
+        getter.target_type = "id"
+        getArr.push(getter)
+        getterCount += g.answer_array.length
       }
       else if (g.answer_type === "range"){
-
+        getter.target_incs: getterCount
+        getterCount++
       }
       else {
 
+        getterCount++
       }
     })
     return getArr
