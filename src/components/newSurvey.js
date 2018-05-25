@@ -16,13 +16,19 @@ class NewSurvey extends Component{
     })
   }
 
-  addToQuestionAndAnswerState = e => {
-    
+  addToQuestionAndAnswerToState = e => {
+    e.preventDefault()
+    const q = e.target[4].value
+    const a
+    if (this.state.formToShow === 1){
+      a = e.target.[5].value.split(", ")
+    }
   }
 
   submitSingleQuestionAndAnswer = e => {
     e.preventDefault()
     console.log(e.target[4].value)
+    console.log(e.target[5].value)
     //then push into state
   }
 
@@ -79,7 +85,7 @@ class NewSurvey extends Component{
                 MULTIPLE CHOICE
                   <label>Question</label>
                     <input type="text" name="multipleChoiceQuestionInput" />
-                  <label>Answers (correct answer first, answers will be randomized)</label>
+                  <label>Answers (separate answers with a comma, correct answer first, answers will be randomized)</label>
                     <input type="text" name="multipleChoiceAnswerInput" />
                 </div>
               : null
@@ -103,8 +109,6 @@ class NewSurvey extends Component{
                 RANGE OR RATING
                   <label>Question</label>
                     <input type="text" name="rangeQuestionInput" />
-                  <label>Answer Range</label>
-                    <input type="text" name="answerInput" />
                 </div>
               : null
             }
