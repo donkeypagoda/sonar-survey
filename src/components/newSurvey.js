@@ -51,7 +51,7 @@ class NewSurvey extends Component{
   }
 
   async addNewSurvey(newSurvey){
-    const result = await fetch("http://localhost:5000/surveys",
+    const result = await fetch("http://localhost:5000/survey",
     {
       method: "POST",
       headers: {
@@ -60,7 +60,8 @@ class NewSurvey extends Component{
       },
       body: JSON.stringify(newSurvey)
     });
-    console.log(result)
+    const deets = await result.json()
+    console.log(deets)
     this.props.history.push('/')
   }
 
@@ -68,6 +69,8 @@ class NewSurvey extends Component{
     e.preventDefault()
     const newSurvey = {
       "title": e.target[0].value,
+      "url": e.target[0].value,
+      "user_id": null
     }
     this.submitSingleQuestionAndAnswer()
     this.addNewSurvey(newSurvey)
