@@ -61,7 +61,7 @@ class NewSurvey extends Component{
       body: JSON.stringify(newSurvey)
     });
     const deets = await result.json()
-    console.log(deets)
+    console.log(deets.result[0].id) //survey id to be input into the answer and question submissions
     this.props.history.push('/')
   }
 
