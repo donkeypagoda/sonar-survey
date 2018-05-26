@@ -25,7 +25,6 @@ class NewSurvey extends Component{
       let ans = e.target[5].value
       let tempArr = ans.split(", ")
       a = tempArr
-      console.log(a)
     }
     else {
       if (this.state.formToShow === 2) a = "boolean"
@@ -44,9 +43,9 @@ class NewSurvey extends Component{
     })
   }
 
-  submitSingleQuestionAndAnswer(){
-    console.log(this.state.answerList)
-    console.log(this.state.questionList)
+  async submitSingleQuestionAndAnswer(id){
+    const res = await
+
 
   }
 
@@ -62,6 +61,7 @@ class NewSurvey extends Component{
     });
     const deets = await result.json()
     console.log(deets.result[0].id) //survey id to be input into the answer and question submissions
+    this.submitQuestionsAndAnswersFromState(deets.result[0].id)
     this.props.history.push('/')
   }
 
@@ -72,7 +72,6 @@ class NewSurvey extends Component{
       "url": e.target[0].value,
       "user_id": null
     }
-    this.submitSingleQuestionAndAnswer()
     this.addNewSurvey(newSurvey)
   }
 
