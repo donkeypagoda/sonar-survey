@@ -43,19 +43,19 @@ class NewSurvey extends Component{
     })
   }
 
-  async submitQuestionsAndAnswersFromState(id){
-    this.state.questionList.map((q, index) => {
-      let ansTypeOrArray = ""
+  async submitQuestionsAndAnswersFromState(id, q, a){
       let ansSubmit = null
-      if (typeof this.state.answerList[index] !== string){
-        ansTypeOrArray = Array.from(this.state.answerList[index])
-        ansSubmit = ansTypeOrArray
+      console.log(q)
+      console.log(a)
+      console.log(typeof a)
+      if (typeof a !== "string"){
+        ansSubmit = Array.from(a)
       }
       else{
-        ansTypeOrArray = this.state.answerList[index]
+        ansSubmit = a
       }
       const newQuestion = {
-        "survey_id": id
+        "survey_id": id,
         "prompt": q,
         "answer_type": ansTypeOrArray
       }
@@ -69,9 +69,9 @@ class NewSurvey extends Component{
           body: JSON.stringify(newQuestion)
         })
       const stuff = await res.json()
-      console.log(stuff.result[0].id)
+      // console.log(stuff[0].id)
       const newAnswer = {
-        "question_id": stuff.result[0].id,
+        "question_id": stuff[0].id,
         "answer_array": ansSubmit
       }
       const resA = await fetch("http://localhost;5000/answers",
@@ -81,9 +81,10 @@ class NewSurvey extends Component{
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(newQuestion)
+          body: JSON.stringify(newAnswer)
       })
-    })
+      const stuffA = await resA.json()
+      // console.log(stuffA)
 
 
 
@@ -101,7 +102,9 @@ class NewSurvey extends Component{
     });
     const deets = await result.json()
     console.log(deets.result[0].id) //survey id to be input into the answer and question submissions
-    this.submitQuestionsAndAnswersFromState(deets.result[0].id)
+    this.state.questionList.map((q, index) => {
+      this.submitQuestionsAndAnswersFromState(deets.result[0].id, q, this.state.answerList[index])
+    })
     this.props.history.push('/')
   }
 
