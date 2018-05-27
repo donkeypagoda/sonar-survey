@@ -46,17 +46,45 @@ class NewSurvey extends Component{
   async submitQuestionsAndAnswersFromState(id){
     this.state.questionList.map((q, index) => {
       let ansTypeOrArray = ""
+      let ansSubmit = null
       if (typeof this.state.answerList[index] !== string){
         ansTypeOrArray = Array.from(this.state.answerList[index])
+        ansSubmit = ansTypeOrArray
+      }
+      else{
+        ansTypeOrArray = this.state.answerList[index]
       }
       const newQuestion = {
         "survey_id": id
         "prompt": q,
-        "answer_type": req.body.prompt
+        "answer_type": ansTypeOrArray
       }
-
+      const res = await fetch("http://localhost:5000/questions",
+        {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newQuestion)
+        })
+      const stuff = await res.json()
+      console.log(stuff.result[0].id)
+      const newAnswer = {
+        "question_id": stuff.result[0].id,
+        "answer_array": ansSubmit
+      }
+      const resA = await fetch("http://localhost;5000/answers",
+        {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newQuestion)
+      })
     })
-    const res = await fetch("http://localhost:5000/")
+
 
 
   }
