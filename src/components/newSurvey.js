@@ -45,9 +45,6 @@ class NewSurvey extends Component{
 
   async submitQuestionsAndAnswersFromState(id, q, a){
       let ansSubmit = null
-      console.log(q)
-      console.log(a)
-      console.log(typeof a)
       if (typeof a !== "string"){
         ansSubmit = Array.from(a)
       }
@@ -57,7 +54,7 @@ class NewSurvey extends Component{
       const newQuestion = {
         "survey_id": id,
         "prompt": q,
-        "answer_type": ansTypeOrArray
+        "answer_type": a
       }
       const res = await fetch("http://localhost:5000/questions",
         {
@@ -69,12 +66,12 @@ class NewSurvey extends Component{
           body: JSON.stringify(newQuestion)
         })
       const stuff = await res.json()
-      // console.log(stuff[0].id)
+      console.log(stuff[0].id)
       const newAnswer = {
         "question_id": stuff[0].id,
-        "answer_array": ansSubmit
+        "answer_array": JSON.stringify(ansSubmit)
       }
-      const resA = await fetch("http://localhost;5000/answers",
+      const resA = await fetch("http://localhost:5000/answers",
         {
           method: "POST",
           headers: {
@@ -84,7 +81,7 @@ class NewSurvey extends Component{
           body: JSON.stringify(newAnswer)
       })
       const stuffA = await resA.json()
-      // console.log(stuffA)
+      console.log(stuffA)
 
 
 
