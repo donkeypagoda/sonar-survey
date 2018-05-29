@@ -33,7 +33,7 @@ class Survey extends Component{
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const {qAndA} = await res.json()
-
+    console.log(qAndA)
     this.setState({
       qAndAList: qAndA,
       surveyUrl: qAndA[0].url

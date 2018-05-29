@@ -16,15 +16,12 @@ class CreateAccount extends Component{
     });
     const res = await result.json()
     console.log(res)
-    // this.props.history.push('/')
+    this.props.history.push('/survey-list')
   }
 
   submitNewUser = e => {
     e.preventDefault()
-    console.log(e.target[0].value)
-    console.log(e.target[1].value)
-    console.log(e.target[2].value)
-    console.log(e.target[3].value)
+    
     let newUser = {
       "name": e.target[0].value,
       "email": e.target[1].value,
