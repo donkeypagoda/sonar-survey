@@ -14,8 +14,9 @@ class CreateAccount extends Component{
       body: JSON.stringify(newUser)
 
     });
-
-    this.props.history.push('/')
+    const res = await result.json()
+    console.log(res)
+    // this.props.history.push('/')
   }
 
   submitNewUser = e => {
