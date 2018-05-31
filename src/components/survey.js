@@ -42,7 +42,7 @@ class Survey extends Component{
   }
 
   async submitCompletedSurvey(newResponse){
-    const res = await fetch("http://localhost:5000/results",
+    const result = await fetch("http://localhost:5000/results",
       {
         method: "POST",
         headers: {
@@ -51,7 +51,8 @@ class Survey extends Component{
         },
         body: JSON.stringify(newResponse)
       })
-
+    const back = await result.json()
+    console.log(back)
     this.props.history.push(`${this.state.surveyUrl}`)
   }
 
