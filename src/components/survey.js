@@ -98,7 +98,7 @@ class Survey extends Component{
     return(
       <div className="container">
         <div className="surveyResults">
-          <SurveyRe
+          <SurveyResults />
         </div>
         <div className="takeSurvey">
           {!this.state.takeSurvey ?
