@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Question from "./question.js"
 import AnswerList from "./answerList"
+import SurveyResults from "./surveyResults"
 
 class Survey extends Component{
   constructor(){
@@ -97,7 +98,7 @@ class Survey extends Component{
     return(
       <div className="container">
         <div className="surveyResults">
-          D3 results will go here
+          <SurveyRe
         </div>
         <div className="takeSurvey">
           {!this.state.takeSurvey ?
