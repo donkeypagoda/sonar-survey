@@ -10,9 +10,11 @@ class SurveyResults extends Component{
   }
 
   render(){
-    <div>
-      TEST
-    </div>
+    return (
+      <div>
+        TEST
+      </div>
+    )
   }
 
 }
