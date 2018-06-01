@@ -6,63 +6,59 @@ class SurveyResults extends Component{
   constructor(){
     super()
     this.state = {
-      data: [
-        { label: "Tacos", count: 15 },
-        { label: "Burgers", count: 12 },
-        { label: "Milkshakes", count: 7 },
-        { label: "Beersh", count: 5 },
-        { label: "Tater Tots", count: 10 },
-      ]
+      data: [5,10,1,3],
+      size: [500, 500]
+      // [
+      //   { label: "Tacos", count: 15 },
+      //   { label: "Burgers", count: 12 },
+      //   { label: "Milkshakes", count: 7 },
+      //   { label: "Beersh", count: 5 },
+      //   { label: "Tater Tots", count: 10 },
+      // ]
     }
-    // this.drawBar = this.drawBar.bind(this)
+    this.drawBar = this.drawBar.bind(this)
   }
-  // componentDidMount(){
-  //   this.drawBar()
-  // }
-  // componentDidUpdate(){
-  //   this.drawBar()
-  // }
-  //
-  // drawPie(){
-  //   const width = 360
-  //   const height = 360
-  //   const radius = Math.min(width, height) / 2
-  //   const color = d3.scaleOrdinal().range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C'])
-  //   const svg = d3.select('#chart')
-  //   .append('svg')
-  //   .attr('width', width)
-  //   .attr('height', height)
-  //   .append('g')
-  //   .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
-  //   const arc = d3.arc()
-  //   .innerRadius(0)
-  //   .outerRadius(radius)
-  //   const pie = d3.pie()
-  //   .value(d => d.count )
-  //   .sort(null)
-  //   const path = svg.selectAll('path')
-  //   .data(pie(this.state.data))
-  //   .enter()
-  //   .append('path')
-  //   .attr('d', arc)
-  //   .attr('fill', function(d, i) {
-  //     return color(d.data.label);
-  //   })
-  // }
+  componentDidMount(){
+    this.drawBar()
+  }
+  componentDidUpdate(){
+    this.drawBar()
+  }
+
+  drawBar() {
+   const node = this.node
+   const dataMax = max(this.state.data)
+   const yScale = scaleLinear()
+      .domain([0, dataMax])
+      .range([0, this.state.size[1]])
+
+select(node)
+   .selectAll('rect')
+   .data(this.state.data)
+   .enter()
+   .append('rect')
+
+select(node)
+   .selectAll('rect')
+   .data(this.state.data)
+   .exit()
+   .remove()
+
+select(node)
+   .selectAll('rect')
+   .data(this.state.data)
+   .style('fill', '#fe9922')
+   .attr('x', (d,i) => i * 25)
+   .attr('y', d => this.state.size[1] - yScale(d))
+   .attr('height', d => yScale(d))
+   .attr('width', 25)
+}
 
 
   render(){
     return (
-      <div className="chart">
-        <svg width="360" height="360">
-          <g transform="translate(180,180)">
-            <path d="M0,-180A..." fill="#393b79"></path>
-            <path d="M105.801..." fill="#5254a3"></path>
-            <path d="M171.190..." fill="#6b6ecf"></path>
-            <path d="M-105.80..." fill="#9c9ede"></path>
-          </g>
-        </svg>
-      </div>
+      <svg ref={node => this.node = node} width={500} height={500}>
+      </svg>
     )
   }
 
