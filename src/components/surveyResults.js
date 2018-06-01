@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import "../App.css"
 import * as d3 from "d3"
 
 class SurveyResults extends Component{
@@ -7,6 +8,7 @@ class SurveyResults extends Component{
     this.state = {
       data: []
     }
+    this.drawPie = this.drawPie.bind(this)
   }
   componentDidMount(){
     //d3 playground
