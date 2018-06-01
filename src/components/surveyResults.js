@@ -6,13 +6,6 @@ class SurveyResults extends Component{
   constructor(){
     super()
     this.state = {
-      data: []
-    }
-    this.drawPie = this.drawPie.bind(this)
-  }
-  componentDidMount(){
-    //d3 playground
-    this.setState({
       data: [
         { label: "Tacos", count: 15 },
         { label: "Burgers", count: 12 },
@@ -20,10 +13,13 @@ class SurveyResults extends Component{
         { label: "Beersh", count: 5 },
         { label: "Tater Tots", count: 10 },
       ]
-
-    })
+    }
+    this.drawPie = this.drawPie.bind(this)
+  }
+  componentDidMount(){
     this.drawPie()
   }
+  componentDidUpdate
   drawPie(){
     const width = 360
     const height = 360
