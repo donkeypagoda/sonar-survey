@@ -10,13 +10,19 @@ class SurveyResults extends Component{
   }
   componentDidMount(){
     //d3 playground
-    const testData = [
-      { label: "Tacos", count: 15 },
-      { label: "Burgers", count: 12 },
-      { label: "Milkshakes", count: 7 },
-      { label: "Beersh", count: 5 },
-      { label: "Tater Tots", count: 10 },
-    ]
+    this.setState({
+      data: [
+        { label: "Tacos", count: 15 },
+        { label: "Burgers", count: 12 },
+        { label: "Milkshakes", count: 7 },
+        { label: "Beersh", count: 5 },
+        { label: "Tater Tots", count: 10 },
+      ]
+
+    })
+    this.drawPie()
+  }
+  drawPie(){
     const width = 360
     const height = 360
     const radius = Math.min(width, height) / 2
@@ -31,10 +37,10 @@ class SurveyResults extends Component{
     .innerRadius(0)
     .outerRadius(radius)
     const pie = d3.pie()
-    .value(function(d) { return d.count })
+    .value(d => d.count )
     .sort(null)
     const path = svg.selectAll('path')
-    .data(pie(dataset))
+    .data(pie(this.state.data))
     .enter()
     .append('path')
     .attr('d', arc)
@@ -42,6 +48,7 @@ class SurveyResults extends Component{
       return color(d.data.label);
     })
   }
+
 
   render(){
     return (
