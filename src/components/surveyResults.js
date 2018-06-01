@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "../App.css"
-import {scaleLinear} from "d3"
+import {scaleLinear, max, select} from "d3"
 
 class SurveyResults extends Component{
   constructor(){
@@ -14,13 +14,13 @@ class SurveyResults extends Component{
         { label: "Tater Tots", count: 10 },
       ]
     }
-    // this.drawPie = this.drawPie.bind(this)
+    // this.drawBar = this.drawBar.bind(this)
   }
   // componentDidMount(){
-  //   this.drawPie()
+  //   this.drawBar()
   // }
   // componentDidUpdate(){
-  //   this.drawPie()
+  //   this.drawBar()
   // }
   //
   // drawPie(){
