@@ -27,7 +27,20 @@ class SurveyResults extends Component{
     .attr('height', height)
     .append('g')
     .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
-
+    const arc = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
+    const pie = d3.pie()
+    .value(function(d) { return d.count })
+    .sort(null)
+    const path = svg.selectAll('path')
+    .data(pie(dataset))
+    .enter()
+    .append('path')
+    .attr('d', arc)
+    .attr('fill', function(d, i) {
+      return color(d.data.label);
+    })
   }
 
   render(){
