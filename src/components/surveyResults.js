@@ -8,13 +8,6 @@ class SurveyResults extends Component{
     this.state = {
       data: [5,10,1,3],
       size: [500, 500]
-      // [
-      //   { label: "Tacos", count: 15 },
-      //   { label: "Burgers", count: 12 },
-      //   { label: "Milkshakes", count: 7 },
-      //   { label: "Beersh", count: 5 },
-      //   { label: "Tater Tots", count: 10 },
-      // ]
     }
     this.drawBar = this.drawBar.bind(this)
   }
