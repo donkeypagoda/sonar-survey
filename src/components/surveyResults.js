@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "../App.css"
-import * as d3 from "d3"
+import {scaleLinear} from "d3"
 
 class SurveyResults extends Component{
   constructor(){
@@ -14,38 +14,41 @@ class SurveyResults extends Component{
         { label: "Tater Tots", count: 10 },
       ]
     }
-    this.drawPie = this.drawPie.bind(this)
+    // this.drawPie = this.drawPie.bind(this)
   }
-  componentDidMount(){
-    this.drawPie()
-  }
-  componentDidUpdate
-  drawPie(){
-    const width = 360
-    const height = 360
-    const radius = Math.min(width, height) / 2
-    const color = d3.scaleOrdinal().range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C'])
-    const svg = d3.select('#chart')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
-    const arc = d3.arc()
-    .innerRadius(0)
-    .outerRadius(radius)
-    const pie = d3.pie()
-    .value(d => d.count )
-    .sort(null)
-    const path = svg.selectAll('path')
-    .data(pie(this.state.data))
-    .enter()
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', function(d, i) {
-      return color(d.data.label);
-    })
-  }
+  // componentDidMount(){
+  //   this.drawPie()
+  // }
+  // componentDidUpdate(){
+  //   this.drawPie()
+  // }
+  //
+  // drawPie(){
+  //   const width = 360
+  //   const height = 360
+  //   const radius = Math.min(width, height) / 2
+  //   const color = d3.scaleOrdinal().range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C'])
+  //   const svg = d3.select('#chart')
+  //   .append('svg')
+  //   .attr('width', width)
+  //   .attr('height', height)
+  //   .append('g')
+  //   .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')')
+  //   const arc = d3.arc()
+  //   .innerRadius(0)
+  //   .outerRadius(radius)
+  //   const pie = d3.pie()
+  //   .value(d => d.count )
+  //   .sort(null)
+  //   const path = svg.selectAll('path')
+  //   .data(pie(this.state.data))
+  //   .enter()
+  //   .append('path')
+  //   .attr('d', arc)
+  //   .attr('fill', function(d, i) {
+  //     return color(d.data.label);
+  //   })
+  // }
 
 
   render(){
