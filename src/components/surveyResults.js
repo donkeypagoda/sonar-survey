@@ -7,7 +7,8 @@ class SurveyResults extends Component{
     super()
     this.state = {
       data: [5,10,1,3],
-      size: [500, 500]
+      size: [500, 500],
+      surveyData: []
     }
     this.drawBar = this.drawBar.bind(this)
   }
@@ -15,6 +16,9 @@ class SurveyResults extends Component{
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
     const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
     const results = await res.json()
+    this.setState({
+      surveyData: results
+    })
     this.drawBar()
   }
   componentDidUpdate(){
