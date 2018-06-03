@@ -11,7 +11,10 @@ class SurveyResults extends Component{
     }
     this.drawBar = this.drawBar.bind(this)
   }
-  componentDidMount(){
+  async componentDidMount(){
+    let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
+    const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
+    const results = await res.json()
     this.drawBar()
   }
   componentDidUpdate(){
