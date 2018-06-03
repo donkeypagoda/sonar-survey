@@ -14,11 +14,12 @@ class SurveyResults extends Component{
   }
   async componentDidMount(){
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
-    const res = await fetch(`http://localhost:5000/survey/q_and_a/${survey_id}`)
+    const res = await fetch(`http://localhost:5000/results/${survey_id}`)
     const results = await res.json()
     this.setState({
       surveyData: results
     })
+    console.log(this.state.surveyData)
     this.drawBar()
   }
   componentDidUpdate(){
