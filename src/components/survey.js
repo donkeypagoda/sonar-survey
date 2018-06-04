@@ -59,7 +59,7 @@ class Survey extends Component{
 
   takeSurvey = () =>{
     this.setState({
-      takeSurvey: true
+      takeSurvey: !this.state.takeSurvey
     })
   }
 
