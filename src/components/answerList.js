@@ -2,7 +2,7 @@ import React from "react"
 
 function AnswerList(props){
   let answerList = []
-  if (typeof props.answer_array === "object"){
+  if (typeof props.answer_array === "object" && props.answer_array !== null){
     answerList.push(<div key={-1}>Answer Choices:</div>)
     let ansName = "mc" + props.id
     for (let i = 0; i < props.answer_array.length; i++){
