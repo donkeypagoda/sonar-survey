@@ -9,7 +9,8 @@ class Survey extends Component{
     this.state = {
       qAndAList: [],
       takeSurvey: false,
-      surveyUrl: null
+      surveyUrl: null,
+      surveyId: null
     }
   }
 
@@ -34,7 +35,8 @@ class Survey extends Component{
     console.log(qAndA)
     this.setState({
       qAndAList: qAndA,
-      surveyUrl: qAndA[0].url
+      surveyUrl: qAndA[0].url,
+      surveyId: survey_id
     })
 
   }
@@ -51,7 +53,8 @@ class Survey extends Component{
       })
     const back = await result.json()
     console.log(back)
-    this.props.history.push(`${this.state.surveyUrl}`)
+    console.log(this.state.history)
+    this.props.history.push(`/${this.state.surveyUrl}/${this.state.surveyId}`)
   }
 
   takeSurvey = () =>{
@@ -78,6 +81,9 @@ class Survey extends Component{
     const responseArr = this.submissionBuilder(this.state.qAndAList, ans)
     responseArr.map(r =>{
       this.submitCompletedSurvey(r)
+    })
+    this.setState({
+      takeSurvey: !this.state.takeSurvey
     })
   }
 
