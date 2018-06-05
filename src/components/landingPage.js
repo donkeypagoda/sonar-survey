@@ -23,10 +23,41 @@ class LandingPage extends Component {
       randomSurveyResults: choice.resopnses
     })
   }
+  //temporary
+  drawBar() {
+   const node = this.node
+   const dataMax = max(this.state.data)
+   const yScale = scaleLinear()
+      .domain([0, dataMax])
+      .range([0, this.state.size[1]])
+
+  select(node)
+     .selectAll('rect')
+     .data(this.state.data)
+     .enter()
+     .append('rect')
+
+  select(node)
+     .selectAll('rect')
+     .data(this.state.data)
+     .exit()
+     .remove()
+
+  select(node)
+     .selectAll('rect')
+     .data(this.state.data)
+     .style('fill', '#fe9922')
+     .attr('x', (d,i) => i * 25)
+     .attr('y', d => this.state.size[1] - yScale(d))
+     .attr('height', d => yScale(d))
+     .attr('width', 25)
+  }
+
   render(){
     return (
       <div className="landingPage">
-        <div>This will be interesting recent survey results</div>
+        <svg ref={node => this.node = node} width={500} height={500}>
+        </svg>
       </div>
     )
   }
