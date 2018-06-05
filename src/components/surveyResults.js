@@ -22,9 +22,9 @@ class SurveyResults extends Component{
     console.log(this.state.surveyData)
     this.drawBar()
   }
-  componentDidUpdate(){
-    this.drawBar()
-  }
+  // componentDidUpdate(){
+  //   this.drawBar()
+  // }
 
   drawBar() {
    const node = this.node

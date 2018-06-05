@@ -64,7 +64,7 @@ class Survey extends Component{
   }
 
   answerGetter = (form) => {
-    const ans = [... form]
+    const ans = [...form]
     const ansArr = []
     ans.map(a => {
       if (a.getAttribute("get") === "multiple_choice" && a.checked) ansArr.push(a.id)
