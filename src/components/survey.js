@@ -53,7 +53,6 @@ class Survey extends Component{
       })
     const back = await result.json()
     console.log(back)
-    console.log(this.state.history)
     this.props.history.push(`/survey/${this.state.surveyUrl}/${this.state.surveyId}`)
   }
 

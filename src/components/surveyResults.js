@@ -12,7 +12,7 @@ class SurveyResults extends Component{
     }
     this.drawBar = this.drawBar.bind(this)
   }
-  async componentDidMount(){
+  async getResults(){
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
     const res = await fetch(`http://localhost:5000/results/${survey_id}`)
     const results = await res.json()
@@ -20,9 +20,14 @@ class SurveyResults extends Component{
       surveyData: results
     })
     console.log(this.state.surveyData)
-    this.drawBar()
+  }
+  componentDidMount(){
+    this.getResults().then(res => {
+      this.drawBar()
+    })
   }
   // componentDidUpdate(){
+  //   this.getResults()
   //   this.drawBar()
   // }
 
@@ -33,27 +38,27 @@ class SurveyResults extends Component{
       .domain([0, dataMax])
       .range([0, this.state.size[1]])
 
-select(node)
-   .selectAll('rect')
-   .data(this.state.data)
-   .enter()
-   .append('rect')
+  select(node)
+     .selectAll('rect')
+     .data(this.state.data)
+     .enter()
+     .append('rect')
 
-select(node)
-   .selectAll('rect')
-   .data(this.state.data)
-   .exit()
-   .remove()
+  select(node)
+     .selectAll('rect')
+     .data(this.state.data)
+     .exit()
+     .remove()
 
-select(node)
-   .selectAll('rect')
-   .data(this.state.data)
-   .style('fill', '#fe9922')
-   .attr('x', (d,i) => i * 25)
-   .attr('y', d => this.state.size[1] - yScale(d))
-   .attr('height', d => yScale(d))
-   .attr('width', 25)
-}
+  select(node)
+     .selectAll('rect')
+     .data(this.state.data)
+     .style('fill', '#fe9922')
+     .attr('x', (d,i) => i * 25)
+     .attr('y', d => this.state.size[1] - yScale(d))
+     .attr('height', d => yScale(d))
+     .attr('width', 25)
+  }
 
 
   render(){
