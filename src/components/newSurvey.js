@@ -28,7 +28,7 @@ class NewSurvey extends Component{
     }
     else {
       if (this.state.formToShow === 2) a = "boolean"
-      else if (this.state.formToShow === 3) a = "rating"
+      else if (this.state.formToShow === 3) a = "range"
       else {
         a = "string"
       }
@@ -47,6 +47,7 @@ class NewSurvey extends Component{
       let ansSubmit = null
       if (typeof a !== "string"){
         ansSubmit = Array.from(a)
+        a = "multiple_choice"
       }
       else{
         ansSubmit = a

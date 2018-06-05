@@ -2,7 +2,7 @@ import React from "react"
 
 function AnswerList(props){
   let answerList = []
-  if (typeof props.answer_array === "object" && props.answer_array !== null){
+  if (props.answer_type === "multiple_choice"){
     answerList.push(<div key={-1}>Answer Choices:</div>)
     let ansName = "mc" + props.id
     for (let i = 0; i < props.answer_array.length; i++){
@@ -24,7 +24,7 @@ function AnswerList(props){
       </div>
     ]
   }
-  else if (props.answer_type === "rating"){
+  else if (props.answer_type === "range"){
     answerList = [
       <div className="answerSelection" key={0}>
         <label>Please Select Between 0 and 10</label>
