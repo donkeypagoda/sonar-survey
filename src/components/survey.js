@@ -10,9 +10,7 @@ class Survey extends Component{
     this.state = {
       qAndAList: [],
       takeSurvey: false,
-      surveyUrl: null,
-      // ansArr: []
-      // ansGetters: []
+      surveyUrl: null
     }
   }
 
@@ -66,7 +64,6 @@ class Survey extends Component{
   answerGetter = (form) => {
     const ans = [...form]
     const ansArr = []
-    console.log(ans)
     ans.map(a => {
       console.log(a)
       if (a.getAttribute("get") !== "boolean" && a.checked) ansArr.push(a.id)
@@ -74,7 +71,6 @@ class Survey extends Component{
       if (a.getAttribute("get") === "rating") ansArr.push(a.value)
       if (a.getAttribute("get") === "string") ansArr.push(a.value)
     })
-    console.log(ansArr)
     return ansArr
   }
 
