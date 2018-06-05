@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import Question from "./question.js"
 import AnswerList from "./answerList"
 import SurveyResults from "./surveyResults"
