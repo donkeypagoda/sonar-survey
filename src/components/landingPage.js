@@ -1,12 +1,16 @@
 import React, {Component} from "react"
 import SurveyResults from "./surveyResults"
+import {scaleLinear, max, select} from "d3"
 
 class LandingPage extends Component {
   constructor(){
     super()
     this.state = {
-      randomSurveyResults: null
+      randomSurveyResults: null,
+      data: [5,10,1,3],
+      size: [500, 500]
     }
+    this.drawBar = this.drawBar.bind(this)
   }
   surveyPicker(total){
     return Math.floor(Math.random() * Math.floor(total))
@@ -22,6 +26,7 @@ class LandingPage extends Component {
     this.setState({
       randomSurveyResults: choice.resopnses
     })
+    this.drawBar()
   }
   //temporary
   drawBar() {
