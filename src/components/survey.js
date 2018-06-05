@@ -68,7 +68,7 @@ class Survey extends Component{
     ans.map(a => {
       if (a.getAttribute("get") !== "boolean" && a.checked) ansArr.push(a.id)
       if (a.getAttribute("get") === "boolean" && a.checked) ansArr.push(a.id)
-      if (a.getAttribute("get") === "rating") ansArr.push(a.value)
+      if (a.getAttribute("get") === "range") ansArr.push(a.value)
       if (a.getAttribute("get") === "string") ansArr.push(a.value)
     })
     return ansArr

@@ -156,7 +156,7 @@ class NewSurvey extends Component{
               <label>True or False</label>
               <input type="radio" id="boolean" name="type" checked={this.state.formToShow === 2} onChange = {() => this.chooseQuestionType(2)}/>
               <label>Scale of 1 to 10</label>
-              <input type="radio" id="rating" name="type" checked={this.state.formToShow === 3} onChange = {() => this.chooseQuestionType(3)}/>
+              <input type="radio" id="range" name="type" checked={this.state.formToShow === 3} onChange = {() => this.chooseQuestionType(3)}/>
               <label>Open Response</label>
               <input type="radio" id="essay" name="type" checked={this.state.formToShow === 4} onChange = {() => this.chooseQuestionType(4)}/>
           </div>
@@ -187,8 +187,8 @@ class NewSurvey extends Component{
           <div>
             {
               this.state.formToShow === 3 ?
-                <div className="ratingQuestionAndAnswerInput">
-                RANGE OR RATING
+                <div className="rangeQuestionAndAnswerInput">
+                RANGE
                   <label>Question</label>
                     <input type="text" name="rangeQuestionInput" />
                 </div>
