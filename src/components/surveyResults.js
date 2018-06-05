@@ -16,7 +16,7 @@ class SurveyResults extends Component{
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
     const res = await fetch(`http://localhost:5000/results/${survey_id}`)
     const results = await res.json()
-    console.log(results)
+    console.log(results.responses)
     this.setState({
       surveyData: results
     })
