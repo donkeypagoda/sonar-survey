@@ -67,7 +67,6 @@ class NewSurvey extends Component{
           body: JSON.stringify(newQuestion)
         })
       const stuff = await res.json()
-      console.log(stuff[0].id)
       const newAnswer = {
         "question_id": stuff[0].id,
         "answer_array": JSON.stringify(ansSubmit)
