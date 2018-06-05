@@ -65,7 +65,6 @@ class Survey extends Component{
     const ans = [...form]
     const ansArr = []
     ans.map(a => {
-      console.log(a)
       if (a.getAttribute("get") !== "boolean" && a.checked) ansArr.push(a.id)
       if (a.getAttribute("get") === "boolean" && a.checked) ansArr.push(a.id)
       if (a.getAttribute("get") === "rating") ansArr.push(a.value)
