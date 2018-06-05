@@ -16,6 +16,12 @@ class LandingPage extends Component {
     const num = await res.json()
     const length = num.surveys.length
     const survey_id = this.surveyPicker(length)
+    const get = await fetch(`http://localhost:5000/results/${survey_id}`)
+    const choice = await get.json()
+    console.log(choice.responses)
+    this.setState({
+      randomSurveyResults: choice.resopnses
+    })
   }
   render(){
     return (
