@@ -7,12 +7,12 @@ class LandingPage extends Component {
     this.state = {
       randomSurveyResults: null
     }
-    async componentDidMount(){
-      const res = await fetch("http://localhost:5000/surveys")
-      const num = await res.json()
-      const length = num.length
-      console.log(length)
-    }
+  }
+  async componentDidMount(){
+    const res = await fetch("http://localhost:5000/surveys")
+    const num = await res.json()
+    const length = num.length
+    console.log(length)
   }
   render(){
     return (
