@@ -1,7 +1,12 @@
 import React, {Component} from "react"
 
 class LandingPage extends Component {
-
+  constructor(){
+    super()
+    this.state = {
+      randomSurveyResults: null
+    }
+  }
   render(){
     return (
       <div className="landingPage">
