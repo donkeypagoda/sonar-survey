@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import SurveyResults from "./surveyResults"
 
 class LandingPage extends Component {
   constructor(){
