@@ -8,11 +8,14 @@ class LandingPage extends Component {
       randomSurveyResults: null
     }
   }
+  surveyPicker(total){
+    return Math.floor(Math.random() * Math.floor(total))
+  }
   async componentDidMount(){
-    const res = await fetch("http://localhost:5000/surveys")
+    const res = await fetch("http://localhost:5000/survey")
     const num = await res.json()
-    const length = num.length
-    console.log(length)
+    const length = num.surveys.length
+    const survey_id = this.surveyPicker(length)
   }
   render(){
     return (
