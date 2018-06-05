@@ -19,7 +19,6 @@ class Survey extends Component{
   submissionBuilder = (qArr, aArr) => {
     const ansArr = []
     qArr.map((a, index) => {
-      console.log(aArr[index])
       let sub = {
         "survey_id": a.survey_id,
         "question_id": a.question_id,
@@ -67,9 +66,10 @@ class Survey extends Component{
   answerGetter = (form) => {
     const ans = [...form]
     const ansArr = []
+    console.log(ans)
     ans.map(a => {
-      console.log(a.getAttribute("get"))
-      if (a.getAttribute("get") === "multiple_choice" && a.checked) ansArr.push(a.id)
+      console.log(a)
+      if (a.getAttribute("get") !== "boolean" && a.checked) ansArr.push(a.id)
       if (a.getAttribute("get") === "boolean" && a.checked) ansArr.push(a.id)
       if (a.getAttribute("get") === "rating") ansArr.push(a.value)
       if (a.getAttribute("get") === "string") ansArr.push(a.value)
