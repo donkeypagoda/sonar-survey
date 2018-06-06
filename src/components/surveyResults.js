@@ -26,10 +26,6 @@ class SurveyResults extends Component{
       this.drawBar()
     })
   }
-  // componentDidUpdate(){
-  //   this.getResults()
-  //   this.drawBar()
-  // }
 
   drawBar() {
    const node = this.node
