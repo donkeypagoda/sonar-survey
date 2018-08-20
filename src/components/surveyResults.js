@@ -13,6 +13,7 @@ class SurveyResults extends Component{
     }
     this.drawBar = this.drawBar.bind(this)
   }
+
   async getResults(){
     let survey_id = window.location.href.slice(window.location.href.lastIndexOf("/") + 1)
     const res = await fetch(`http://localhost:5000/results/${survey_id}`)
@@ -22,6 +23,7 @@ class SurveyResults extends Component{
     })
     console.log(this.state.surveyData)
   }
+
   componentDidMount(){
     this.getResults().then(res => {
       this.dataProcess().then(stuff =>{
@@ -31,8 +33,8 @@ class SurveyResults extends Component{
     })
   }
 
-  dataProcess(){
-    this.state.surveyData.map(response => {
+  async dataProcess(){
+    const stuff = await this.state.surveyData.map(response => {
       if (this.state.graphArr.length < response.question_id){
         switch (response.answer_type) {
           case "boolean":
