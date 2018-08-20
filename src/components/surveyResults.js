@@ -8,7 +8,8 @@ class SurveyResults extends Component{
     this.state = {
       data: [5,10,1,3],
       size: [500, 500],
-      surveyData: []
+      surveyData: [],
+      graphArr:[]
     }
     this.drawBar = this.drawBar.bind(this)
   }
@@ -23,9 +24,43 @@ class SurveyResults extends Component{
   }
   componentDidMount(){
     this.getResults().then(res => {
-      this.drawBar()
+      this.dataProcess().then(stuff =>{
+        this.drawBar()
+
+      })
     })
   }
+
+  dataProcess(){
+    this.state.surveyData.map(response => {
+      if (this.state.graphArr.length < response.question_id){
+        switch (response.answer_type) {
+          case "boolean":
+            this.state.graphArr.push("boolean")
+            console.log("boolean");
+            break;
+          case "range":
+            this.state.graphArr.push("range")
+            console.log("range");
+            break;
+          case "multiple_choice":
+            this.state.graphArr.push("multiple_choice")
+            console.log("multiple_choice");
+            break;
+          case "string":
+            this.state.graphArr.push("string")
+            console.log("string");
+            break;
+          default:
+            console.log("borked")
+        }
+      }
+    })
+  }
+  // multChoice(){
+  //   const node = this.node;
+  //   const multMax = max(this.)
+  // }
 
   drawBar() {
    const node = this.node
