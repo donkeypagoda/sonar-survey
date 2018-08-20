@@ -9,7 +9,7 @@ class SurveyResults extends Component{
       data: [5,10,1,3],
       size: [500, 500],
       surveyData: [],
-      graphArr:[]
+      typeArr:[]
     }
     this.drawBar = this.drawBar.bind(this)
   }
@@ -26,43 +26,68 @@ class SurveyResults extends Component{
 
   componentDidMount(){
     this.getResults().then(res => {
-      this.dataProcess().then(stuff =>{
+      this.typeProcess().then(stuff => {
         this.drawBar()
 
       })
     })
   }
 
-  async dataProcess(){
-    const stuff = await this.state.surveyData.map(response => {
-      if (this.state.graphArr.length < response.question_id){
-        switch (response.answer_type) {
+  async typeProcess(){
+    const stuff = await this.state.surveyData.map(res => {
+      if (this.state.typeArr.length < res.question_id) {
+        switch (res.answer_type) {
           case "boolean":
-            this.state.graphArr.push("boolean")
-            console.log("boolean");
+            this.state.typeArr.push("boolean")
+            console.log(this.state.typeArr);
             break;
           case "range":
-            this.state.graphArr.push("range")
-            console.log("range");
+            this.state.typeArr.push("range")
+            console.log(this.state.typeArr);
             break;
           case "multiple_choice":
-            this.state.graphArr.push("multiple_choice")
-            console.log("multiple_choice");
+            this.state.typeArr.push("multiple_choice")
+            console.log(this.state.typeArr);
             break;
           case "string":
-            this.state.graphArr.push("string")
-            console.log("string");
+            this.state.typeArr.push("string")
+            console.log(this.state.typeArr);
             break;
           default:
             console.log("borked")
         }
       }
+
     })
   }
-  // multChoice(){
-  //   const node = this.node;
-  //   const multMax = max(this.)
-  // }
+
+  async renderAll(){
+    const charts = await this.state.typeArr.forEach(e => {
+      // and here is maybe the another switch case to break out these choices... this is messy architecture, not sure how to fix
+    })
+  }
+
+  async boolProcess(qId){
+    let bool = await this.state.surveyData.map(data => {
+        if (data.question_id === qId) {
+          // logic in here for an individual question, need to abstract a way to store for all... maybe this should be done on the backend
+        }
+    })
+
+  }
+
+  async rangeProcess(){
+
+  }
+
+
+  async multiProcess(){
+
+  }
+
+  async stringProcess(){
+
+  }
 
   drawBar() {
    const node = this.node
