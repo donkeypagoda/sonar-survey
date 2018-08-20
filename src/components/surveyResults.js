@@ -81,15 +81,15 @@ class SurveyResults extends Component{
   }
 
 
-  async multiProcess(){
-
+  async multiProcess(qId){
+    // const bar = await this.drawBar(qId)
   }
 
   async stringProcess(){
 
   }
 
-  drawBar() {
+  drawBar(qId) {
    const node = this.node
    const dataMax = max(this.state.data)
    const yScale = scaleLinear()
