@@ -34,60 +34,73 @@ class SurveyResults extends Component{
   }
 
   async typeProcess(){
+    let resHash = {}
     const stuff = await this.state.surveyData.map(res => {
-      if (this.state.typeArr.length < res.question_id) {
-        switch (res.answer_type) {
-          case "boolean":
-            this.state.typeArr.push("boolean")
-            console.log(this.state.typeArr);
-            break;
-          case "range":
-            this.state.typeArr.push("range")
-            console.log(this.state.typeArr);
-            break;
-          case "multiple_choice":
-            this.state.typeArr.push("multiple_choice")
-            console.log(this.state.typeArr);
-            break;
-          case "string":
-            this.state.typeArr.push("string")
-            console.log(this.state.typeArr);
-            break;
-          default:
-            console.log("borked")
+      if (!resHash[res.question_id]){
+        console.log("up dog")
+        let quesHash = {
+          id: res.question_id;
+          answer_type: res.answer_type;
+          prompt: res.prompt;
+          answer_array: res.answer_array;
+
         }
+        resHash[res.question_id]
       }
 
+      // if (this.state.typeArr.length < res.question_id) {
+      //   switch (res.answer_type) {
+      //     case "boolean":
+      //       this.state.typeArr.push("boolean")
+      //       console.log(this.state.typeArr);
+      //       break;
+      //     case "range":
+      //       this.state.typeArr.push("range")
+      //       console.log(this.state.typeArr);
+      //       break;
+      //     case "multiple_choice":
+      //       this.state.typeArr.push("multiple_choice")
+      //       console.log(this.state.typeArr);
+      //       break;
+      //     case "string":
+      //       this.state.typeArr.push("string")
+      //       console.log(this.state.typeArr);
+      //       break;
+      //     default:
+      //       console.log("borked")
+      //   }
+      // }
+
     })
   }
 
-  async renderAll(){
-    const charts = await this.state.typeArr.forEach(e => {
-      // and here is maybe the another switch case to break out these choices... this is messy architecture, not sure how to fix
-    })
-  }
-
-  async boolProcess(qId){
-    let bool = await this.state.surveyData.map(data => {
-        if (data.question_id === qId) {
-          // logic in here for an individual question, need to abstract a way to store for all... maybe this should be done on the backend
-        }
-    })
-
-  }
-
-  async rangeProcess(){
-
-  }
-
-
-  async multiProcess(qId){
-    // const bar = await this.drawBar(qId)
-  }
-
-  async stringProcess(){
-
-  }
+  // async renderAll(){
+  //   const charts = await this.state.typeArr.forEach(e => {
+  //     // and here is maybe the another switch case to break out these choices... this is messy architecture, not sure how to fix
+  //   })
+  // }
+  //
+  // async boolProcess(qId){
+  //   let bool = await this.state.surveyData.map(data => {
+  //       if (data.question_id === qId) {
+  //         // logic in here for an individual question, need to abstract a way to store for all... maybe this should be done on the backend
+  //       }
+  //   })
+  //
+  // }
+  //
+  // async rangeProcess(){
+  //
+  // }
+  //
+  //
+  // async multiProcess(qId){
+  //   // const bar = await this.drawBar(qId)
+  // }
+  //
+  // async stringProcess(){
+  //
+  // }
 
   drawBar(qId) {
    const node = this.node
