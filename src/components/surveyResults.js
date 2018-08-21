@@ -9,7 +9,8 @@ class SurveyResults extends Component{
       data: [5,10,1,3],
       size: [500, 500],
       surveyData: [],
-      typeArr:[]
+      typeArr:[],
+      resHash: {}
     }
     this.drawBar = this.drawBar.bind(this)
   }
@@ -39,14 +40,19 @@ class SurveyResults extends Component{
       if (!resHash[res.question_id]){
         console.log("up dog")
         let quesHash = {
-          id: res.question_id;
-          answer_type: res.answer_type;
-          prompt: res.prompt;
-          answer_array: res.answer_array;
-
+          id: res.question_id,
+          answer_type: res.answer_type,
+          prompt: res.prompt,
+          answer_array: res.answer_array,
+          response_string: [res.response_string]
         }
-        resHash[res.question_id]
+        resHash[res.question_id] = quesHash;
       }
+
+      else if (resHash[res.question_id]) {
+        resHash[res.question_id].response_string.push(res.response_string)
+      }
+
 
       // if (this.state.typeArr.length < res.question_id) {
       //   switch (res.answer_type) {
@@ -72,6 +78,8 @@ class SurveyResults extends Component{
       // }
 
     })
+    this.state.resHash = resHash
+    console.log(this.state.resHash)
   }
 
   // async renderAll(){
