@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "../App.css"
-import {scaleLinear, max, select} from "d3"
+import {scaleLinear, max, select, axis} from "d3"
 
 class SurveyResults extends Component{
   constructor(){
@@ -12,6 +12,8 @@ class SurveyResults extends Component{
       typeArr:[],
       resHash: {}
     }
+    this.d3Node = React.createRef()
+
     this.drawBar = this.drawBar.bind(this)
   }
 
@@ -82,40 +84,14 @@ class SurveyResults extends Component{
     console.log(this.state.resHash)
   }
 
-  // async renderAll(){
-  //   const charts = await this.state.typeArr.forEach(e => {
-  //     // and here is maybe the another switch case to break out these choices... this is messy architecture, not sure how to fix
-  //   })
-  // }
-  //
-  // async boolProcess(qId){
-  //   let bool = await this.state.surveyData.map(data => {
-  //       if (data.question_id === qId) {
-  //         // logic in here for an individual question, need to abstract a way to store for all... maybe this should be done on the backend
-  //       }
-  //   })
-  //
-  // }
-  //
-  // async rangeProcess(){
-  //
-  // }
-  //
-  //
-  // async multiProcess(qId){
-  //   // const bar = await this.drawBar(qId)
-  // }
-  //
-  // async stringProcess(){
-  //
-  // }
-
   drawBar(qId) {
    const node = this.node
    const dataMax = max(this.state.data)
    const yScale = scaleLinear()
       .domain([0, dataMax])
       .range([0, this.state.size[1]])
+
+    const xAxis =
 
   select(node)
      .selectAll('rect')
@@ -137,6 +113,7 @@ class SurveyResults extends Component{
      .attr('y', d => this.state.size[1] - yScale(d))
      .attr('height', d => yScale(d))
      .attr('width', 25)
+     .call(xAxis)
   }
 
 
