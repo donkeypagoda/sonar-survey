@@ -85,7 +85,7 @@ class SurveyResults extends Component{
   }
 
   drawBar(qId) {
-   const node = this.node
+   const node = this.d3Node
    const dataMax = max(this.state.data)
    const yScale = scaleLinear()
       .domain([0, dataMax])
@@ -119,7 +119,7 @@ class SurveyResults extends Component{
 
   render(){
     return (
-      <svg ref={node => this.node = node} width={500} height={500}>
+      <svg ref={this.d3node} width={500} height={500}>
       </svg>
     )
   }
