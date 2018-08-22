@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import "../App.css"
-import {scaleLinear, max, select, axis} from "d3"
+import * as d3 from "d3"
 
 class SurveyResults extends Component{
   constructor(){
@@ -86,26 +86,26 @@ class SurveyResults extends Component{
 
   drawBar(qId) {
    const node = this.d3Node
-   const dataMax = max(this.state.data)
-   const yScale = scaleLinear()
+   const dataMax = d3.max(this.state.data)
+   const yScale = d3.scaleLinear()
       .domain([0, dataMax])
       .range([0, this.state.size[1]])
 
-    const xAxis =
+    const xAxis = d3.svg.axis()
 
-  select(node)
+  d3.select(node)
      .selectAll('rect')
      .data(this.state.data)
      .enter()
      .append('rect')
 
-  select(node)
+  d3.select(node)
      .selectAll('rect')
      .data(this.state.data)
      .exit()
      .remove()
 
-  select(node)
+  d3.select(node)
      .selectAll('rect')
      .data(this.state.data)
      .style('fill', '#fe9922')
