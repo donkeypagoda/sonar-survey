@@ -40,19 +40,18 @@ class SurveyResults extends Component{
     let resHash = {}
     const stuff = await this.state.surveyData.map(res => {
       if (!resHash[res.question_id]){
-        console.log("up dog")
         let quesHash = {
           id: res.question_id,
           answer_type: res.answer_type,
           prompt: res.prompt,
           answer_array: res.answer_array,
-          response_string: [res.response_string]
+          response_array: [res.response_string]
         }
         resHash[res.question_id] = quesHash;
       }
 
       else if (resHash[res.question_id]) {
-        resHash[res.question_id].response_string.push(res.response_string)
+        resHash[res.question_id].response_array.push(res.response_string)
       }
 
     })
@@ -64,9 +63,9 @@ class SurveyResults extends Component{
   drawBar(qId) {
     const currentQ = this.state.resHash[qId]
     console.log(currentQ)
-    
+
     let resCountArr = Array(currentQ.answer_array.length).fill(0)
-    currentQ.response_string.map(r => {
+    currentQ.response_array.map(r => {
       let choiceNumb = currentQ.answer_array.indexOf(r)
       resCountArr[choiceNumb] += 1
     })
@@ -74,7 +73,15 @@ class SurveyResults extends Component{
 
     const x = d3.scaleBand().rangeRoundBands([0, this.state.chartSize.width], 0.5)
     const y = d3.scaleLinear().range([this.state.chartSize.height], 0)
-    // const xAxis = d3.
+    const xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom")
+      .ticks(currentQ.answer_array.length)
+    const yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .ticks(Math.max(... resCountArr) + 1)
+
     d3.select(this.d3Node)
 
   }
