@@ -83,6 +83,11 @@ class SurveyResults extends Component{
       .ticks(Math.max(... resCountArr) + 1)
 
     d3.select(this.d3Node)
+      .attr("width", this.state.chartSize.width)
+      .attr("height", this.state.chartSize.height)
+      .append("g")
+      .call(xAxis)
+
 
   }
 
