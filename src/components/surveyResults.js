@@ -7,9 +7,12 @@ class SurveyResults extends Component{
     super()
     this.state = {
       data: [5,10,1,3],
-      size: [500, 500],
+      chartSize: {
+        height:500,
+        width:500
+      },
       surveyData: [],
-      resHash: {}
+      resHash: {},
     }
     this.drawBar = this.drawBar.bind(this)
   }
@@ -61,10 +64,17 @@ class SurveyResults extends Component{
   drawBar(qId) {
     const currentQ = this.state.resHash[qId]
     console.log(currentQ)
-    const ansCount = Array(currentQ.answer_array.length)
+    
+    let resCountArr = Array(currentQ.answer_array.length).fill(0)
+    currentQ.response_string.map(r => {
+      let choiceNumb = currentQ.answer_array.indexOf(r)
+      resCountArr[choiceNumb] += 1
+    })
+    console.log(resCountArr)
 
-    const x = d3.scaleBand().rangeRoundBands([0, ansCount], 0.5)
-    const xAxis = d3.
+    const x = d3.scaleBand().rangeRoundBands([0, this.state.chartSize.width], 0.5)
+    const y = d3.scaleLinear().range([this.state.chartSize.height], 0)
+    // const xAxis = d3.
     d3.select(this.d3Node)
 
   }
@@ -72,7 +82,7 @@ class SurveyResults extends Component{
 
   render(){
     return (
-      <svg ref={this.d3Node} width={500} height={500}>
+      <svg ref={this.d3Node}>
       </svg>
     )
   }
