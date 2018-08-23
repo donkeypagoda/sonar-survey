@@ -61,11 +61,11 @@ class SurveyResults extends Component{
   drawBar(qId) {
     const currentQ = this.state.resHash[qId]
     console.log(currentQ)
-    // let resCount = Array(this.state.resHash)
-    //
-    // const x = d3.scaleBand().rangeRoundBands([0, this.state.resHash[qId].answer_array.length], 0.5)
-    // const xAxis = d3.
-    // d3.select(this.d3Node)
+    const ansCount = Array(currentQ.answer_array.length)
+
+    const x = d3.scaleBand().rangeRoundBands([0, ansCount], 0.5)
+    const xAxis = d3.
+    d3.select(this.d3Node)
 
   }
 
