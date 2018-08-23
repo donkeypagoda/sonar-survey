@@ -30,13 +30,13 @@ class SurveyResults extends Component{
 
   componentDidMount(){
     this.getResults().then(res => {
-      this.typeProcess().then(stuff => {
+      this.resProcess().then(stuff => {
         this.drawBar(3)  // temporarily hardcoding the third question in, later this will be replaced by a switch function to select the appropriate chart functions based on question type
       })
     })
   }
 
-  async typeProcess(){
+  async resProcess(){
     let resHash = {}
     const stuff = await this.state.surveyData.map(res => {
       if (!resHash[res.question_id]){
