@@ -70,27 +70,33 @@ class SurveyResults extends Component{
       resCountArr[choiceNumb] += 1
     })
     // console.log(resCountArr)
-    console.log(this.d3Node.current)
-    const x = d3.scaleBand().rangeRoundBands([0, this.state.chartSize.width], 0.5)
-    const y = d3.scaleLinear().range([this.state.chartSize.height], 0)
-    const xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom")
-      .ticks(currentQ.answer_array.length)
-    const yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .ticks(Math.max(...resCountArr) + 1)
 
-    d3.select(this.d3Node.current)
-      .attr("width", this.state.chartSize.width)
-      .attr("height", this.state.chartSize.height)
-      .append("g")
-      .call(xAxis)
-      .style("background-color", "red")
-      .append("g")
-      .call(yAxis)
-console.log("tacos")
+    const chart = d3.select (this.d3Node.current);
+    const barHeight = 20;
+    const chartWidth = 200;
+    const xScale = d3
+      .scaleLinear()
+      .domain ([0, d3.max (resCountArr)])
+      .range ([0, chartWidth]);
+    const bar = chart
+      .selectAll ('g')
+      .data (resCountArr)
+      .enter ()
+      .append ('g')
+      .attr ('transform', (value, i) => `translate(0,${i * barHeight})`);
+    bar
+      .append ('rect')
+      .attr ('width', value => xScale (value))
+      .attr ('height', barHeight - 1)
+      .attr ('style', 'fill: steelblue;');
+    bar
+      .append ('text')
+      .attr ('x', value => xScale (value) - 5)
+      .attr ('y', barHeight / 2)
+      .attr ('dy', '.35em')
+      .attr ('style', 'fill: white; font: 14px sans-serif; text-anchor: end;')
+      .text (value => value);
+
   }
 
 
