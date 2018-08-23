@@ -25,7 +25,7 @@ class SurveyResults extends Component{
     this.setState({
       surveyData: results.responses
     })
-    console.log(this.state.surveyData)
+    // console.log(this.state.surveyData)
   }
 
   componentDidMount(){
@@ -69,8 +69,8 @@ class SurveyResults extends Component{
       let choiceNumb = currentQ.answer_array.indexOf(r)
       resCountArr[choiceNumb] += 1
     })
-    console.log(resCountArr)
-
+    // console.log(resCountArr)
+    console.log(this.d3Node.current)
     const x = d3.scaleBand().rangeRoundBands([0, this.state.chartSize.width], 0.5)
     const y = d3.scaleLinear().range([this.state.chartSize.height], 0)
     const xAxis = d3.svg.axis()
@@ -80,22 +80,23 @@ class SurveyResults extends Component{
     const yAxis = d3.svg.axis()
       .scale(y)
       .orient("left")
-      .ticks(Math.max(... resCountArr) + 1)
+      .ticks(Math.max(...resCountArr) + 1)
 
-    d3.select(this.d3Node)
+    d3.select(this.d3Node.current)
       .attr("width", this.state.chartSize.width)
       .attr("height", this.state.chartSize.height)
       .append("g")
       .call(xAxis)
-
-
+      .style("background-color", "red")
+      .append("g")
+      .call(yAxis)
+console.log("tacos")
   }
 
 
   render(){
     return (
-      <svg ref={this.d3Node}>
-      </svg>
+      <svg ref={this.d3Node} />
     )
   }
 
