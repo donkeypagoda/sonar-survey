@@ -32,19 +32,20 @@ class SurveyResults extends Component{
     this.getResults().then(res => {
       this.resProcess().then(resHash => {
         this.state.resHash = resHash
+        console.log(resHash)
         for(const a in resHash){
-          switch (a.answer_type){
+          switch (resHash[a].answer_type){
             case "boolean":
-            console.log(a.id);
+            console.log(resHash[a].id);
             break;
             case "range":
-            console.log(a.id);
+            console.log(resHash[a].id);
             break;
             case "multiple_choice":
-              this.drawBar(a.id);
+              this.drawBar(resHash[a].id);
               break;
             case "string":
-              console.log(a.id);
+              console.log(resHash[a].id);
               break;
             default:
               console.log('borked');
