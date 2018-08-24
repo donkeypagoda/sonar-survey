@@ -63,17 +63,31 @@ class SurveyResults extends Component{
   drawBar(qId) {
     const currentQ = this.state.resHash[qId]
     console.log(currentQ)
+    console.log(currentQ.response_array)
+
+    // // alt version with a complex data array of objects
+    // let resCountArr = []
+    // currentQ.answer_array.map(ele => {
+    //   resCountArr.push({[ele]:0})
+    // })
+    // currentQ.response_array.map(r => {
+    //   let choiceNumb = currentQ.answer_array.indexOf(r)
+    //   resCountArr[choiceNumb][r] += 1
+    // })
 
     let resCountArr = Array(currentQ.answer_array.length).fill(0)
     currentQ.response_array.map(r => {
       let choiceNumb = currentQ.answer_array.indexOf(r)
       resCountArr[choiceNumb] += 1
     })
-    // console.log(resCountArr)
+
+
+    console.log(resCountArr)
 
     const chart = d3.select (this.d3Node.current);
     const barHeight = 20;
     const chartWidth = 200;
+
     const xScale = d3
       .scaleLinear()
       .domain ([0, d3.max (resCountArr)])
@@ -95,7 +109,7 @@ class SurveyResults extends Component{
       .attr ('y', barHeight / 2)
       .attr ('dy', '.35em')
       .attr ('style', 'fill: white; font: 14px sans-serif; text-anchor: end;')
-      .text (value => value);
+      .text (ans => ans);
 
   }
 
