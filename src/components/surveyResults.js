@@ -65,16 +65,6 @@ class SurveyResults extends Component{
     console.log(currentQ)
     console.log(currentQ.response_array)
 
-    // // alt version with a complex data array of objects
-    // let resCountArr = []
-    // currentQ.answer_array.map(ele => {
-    //   resCountArr.push({[ele]:0})
-    // })
-    // currentQ.response_array.map(r => {
-    //   let choiceNumb = currentQ.answer_array.indexOf(r)
-    //   resCountArr[choiceNumb][r] += 1
-    // })
-
     let resCountArr = Array(currentQ.answer_array.length).fill(0)
     currentQ.response_array.map(r => {
       let choiceNumb = currentQ.answer_array.indexOf(r)
@@ -102,15 +92,14 @@ class SurveyResults extends Component{
       .append ('rect')
       .attr ('width', value => xScale (value))
       .attr ('height', barHeight - 1)
-      .attr ('style', 'fill: steelblue;');
+      .attr ('style', 'fill: steelblue;')
     bar
       .append ('text')
       .attr ('x', value => xScale (value) - 5)
       .attr ('y', barHeight / 2)
       .attr ('dy', '.35em')
       .attr ('style', 'fill: white; font: 14px sans-serif; text-anchor: end;')
-      // .attr("transform", "rotate(-90)")
-      .text ((d, i) => currentQ.answer_array[i]);
+      .text ((d, i) => currentQ.answer_array[i])
 
   }
 
