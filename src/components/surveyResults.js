@@ -109,7 +109,8 @@ class SurveyResults extends Component{
       .attr ('y', barHeight / 2)
       .attr ('dy', '.35em')
       .attr ('style', 'fill: white; font: 14px sans-serif; text-anchor: end;')
-      .text (ans => ans);
+      // .attr("transform", "rotate(-90)")
+      .text ((d, i) => currentQ.answer_array[i]);
 
   }
 
