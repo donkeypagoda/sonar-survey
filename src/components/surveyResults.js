@@ -30,8 +30,27 @@ class SurveyResults extends Component{
 
   componentDidMount(){
     this.getResults().then(res => {
-      this.resProcess().then(stuff => {
-        this.drawBar(3)  // temporarily hardcoding the third question in, later this will be replaced by a switch function to select the appropriate chart functions based on question type
+      this.resProcess().then(resHash => {
+        this.state.resHash = resHash
+        for(const a in resHash){
+          switch (a.answer_type){
+            case "boolean":
+            console.log(a.id);
+            break;
+            case "range":
+            console.log(a.id);
+            break;
+            case "multiple_choice":
+              this.drawBar(a.id);
+              break;
+            case "string":
+              console.log(a.id);
+              break;
+            default:
+              console.log('borked');
+          }
+
+        }
       })
     })
   }
@@ -55,24 +74,18 @@ class SurveyResults extends Component{
       }
 
     })
-    this.state.resHash = resHash
-    console.log(this.state.resHash)
+    return resHash
   }
 
 
   drawBar(qId) {
     const currentQ = this.state.resHash[qId]
-    console.log(currentQ)
-    console.log(currentQ.response_array)
 
     let resCountArr = Array(currentQ.answer_array.length).fill(0)
     currentQ.response_array.map(r => {
       let choiceNumb = currentQ.answer_array.indexOf(r)
       resCountArr[choiceNumb] += 1
     })
-
-
-    console.log(resCountArr)
 
     const chart = d3.select (this.d3Node.current);
     const barHeight = 20;
