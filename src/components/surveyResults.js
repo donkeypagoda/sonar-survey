@@ -43,6 +43,7 @@ class SurveyResults extends Component{
             break;
             case "multiple_choice":
               this.drawBar(resHash[a].id);
+              console.log(resHash[a].id);
               break;
             case "string":
               console.log(resHash[a].id);
@@ -114,7 +115,6 @@ class SurveyResults extends Component{
       .attr ('dy', '.35em')
       .attr ('style', 'fill: white; font: 14px sans-serif; text-anchor: end;')
       .text ((d, i) => currentQ.answer_array[i])
-
   }
 
 
